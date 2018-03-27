@@ -1,55 +1,43 @@
+import * as R from 'ramda'
 import React from 'react'
-import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
+import Marked from 'marked'
+import { notNilOrEmpty, mapIndexed, rawMarkup } from '../lib/helpers'
 
-export default class IndexPage extends React.Component {
+export default class Home extends React.Component {
   render() {
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
+    const settings = {
+      autoplay: true,
+      arrows: false,
+      dots: true,
+      infinite: true,
+      speed: 3500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+    }
+    const page = posts.filter(
+      post => post.node.frontmatter.templateKey === 'about-page'
+    )[0].node.frontmatter
 
     return (
-      <section className="section">
-        <div className="container">
-          <div className="content">
-            <h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
+      <main id="main">
+        <section id="banner">
+          <div className="inner">
+            <div className="logo">
+              <span className="icon fa-diamond" />
+            </div>
+            <h2>This is Solid State</h2>
+            <p>
+              Another free + fully responsive site template by{' '}
+              <a href="http://html5up.net">HTML5 UP</a>
+            </p>
           </div>
-          {posts
-            .filter(post => post.node.frontmatter.templateKey === 'blog-post')
-            .map(({ node: post }) => (
-              <div
-                className="content"
-                style={{ border: '1px solid #eaecee', padding: '2em 4em' }}
-                key={post.id}
-              >
-                <p>
-                  <Link className="has-text-primary" to={post.fields.slug}>
-                    {post.frontmatter.title}
-                  </Link>
-                  <span> &bull; </span>
-                  <small>{post.frontmatter.date}</small>
-                </p>
-                <p>
-                  {post.excerpt}
-                  <br />
-                  <br />
-                  <Link className="button is-small" to={post.fields.slug}>
-                    Keep Reading →
-                  </Link>
-                </p>
-              </div>
-            ))}
-        </div>
-      </section>
+        </section>
+      </main>
     )
   }
-}
-
-IndexPage.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
 }
 
 export const pageQuery = graphql`
@@ -57,15 +45,36 @@ export const pageQuery = graphql`
     allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
       edges {
         node {
-          excerpt(pruneLength: 400)
-          id
-          fields {
-            slug
-          }
           frontmatter {
-            title
+            heading
+            subheading
             templateKey
-            date(formatString: "MMMM DD, YYYY")
+            hero {
+              image
+              text
+            }
+            intro {
+              blurbs {
+                image
+                text
+              }
+            }
+            mission {
+              image
+              text
+              check_list {
+                text
+              }
+            }
+            testimonials {
+              author
+              quote
+              title
+            }
+            bottom_gallery {
+              image
+              text
+            }
           }
         }
       }
