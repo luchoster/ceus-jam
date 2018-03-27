@@ -18,7 +18,7 @@ export default class Home extends React.Component {
       slidesToScroll: 1,
     }
     const page = posts.filter(
-      post => post.node.frontmatter.templateKey === 'about-page'
+      post => post.node.frontmatter.templateKey === 'home-page'
     )[0].node.frontmatter
 
     return (
@@ -46,34 +46,19 @@ export const pageQuery = graphql`
       edges {
         node {
           frontmatter {
-            heading
-            subheading
             templateKey
             hero {
+              heading
               image
               text
             }
             intro {
-              blurbs {
-                image
+              spotlight {
+                title
+                subtitle
                 text
+                link
               }
-            }
-            mission {
-              image
-              text
-              check_list {
-                text
-              }
-            }
-            testimonials {
-              author
-              quote
-              title
-            }
-            bottom_gallery {
-              image
-              text
             }
           }
         }
