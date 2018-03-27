@@ -47,19 +47,6 @@ export const pageQuery = graphql`
         node {
           frontmatter {
             templateKey
-            hero {
-              heading
-              image
-              text
-            }
-            intro {
-              spotlight {
-                title
-                subtitle
-                text
-                link
-              }
-            }
           }
         }
       }
