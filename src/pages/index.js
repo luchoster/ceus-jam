@@ -28,11 +28,53 @@ export default class Home extends React.Component {
             <div className="logo">
               <span className="icon fa-diamond" />
             </div>
-            <h2>{page.title}</h2>
+            <h2>{page.intro.about.title}</h2>
             <p>
               Another free + fully responsive site template by{' '}
               <a href="http://html5up.net">HTML5 UP</a>
             </p>
+          </div>
+        </section>
+        <section id="one" class="wrapper style1">
+          <div class="inner">
+            <section class="spotlights">
+              <article>
+                <header class="major">
+                  <p>Magna</p>
+                  <h2>Dolor sit amet vivamus</h2>
+                </header>
+                <p>
+                  Phasellus in ante vitae nibh porttitor tempus vitae ut ante.
+                  Vestibulum blandit ex a elementum viverra. Sed quat diam,
+                  aliquet tempus felis nisl at lacus.
+                </p>
+                <ul class="actions">
+                  <li>
+                    <a href="#" class="button">
+                      More
+                    </a>{' '}
+                  </li>
+                </ul>
+              </article>
+              <article>
+                <header class="major">
+                  <p>Lorem</p>
+                  <h2>Ipsum dolor sit amet</h2>
+                </header>
+                <p>
+                  Phasellus in ante vitae nibh porttitor tempus vitae ut ante.
+                  Vestibulum blandit ex a elementum viverra. Sed quat diam,
+                  aliquet tempus felis nisl at lacus.
+                </p>
+                <ul class="actions">
+                  <li>
+                    <a href="#" class="button">
+                      More
+                    </a>
+                  </li>
+                </ul>
+              </article>
+            </section>
           </div>
         </section>
       </main>
@@ -47,7 +89,11 @@ export const pageQuery = graphql`
         node {
           frontmatter {
             templateKey
-            title
+            intro {
+              about {
+                title
+              }
+            }
           }
         }
       }
