@@ -28,7 +28,7 @@ export default class Home extends React.Component {
             <div className="logo">
               <span className="icon fa-diamond" />
             </div>
-            <h2>This is Solid State</h2>
+            <h2>{page.templateKey}</h2>
             <p>
               Another free + fully responsive site template by{' '}
               <a href="http://html5up.net">HTML5 UP</a>
