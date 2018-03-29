@@ -29,5 +29,12 @@ intro:
         nationwide as a developer of software systems to suit the needs of our
         customers.
       title: Our Vision
+    - link: /
+      subtitle: ' '
+      text: >-
+        We support our business partners with quality software applications that
+        meet their needs and increase their business opportunities in the
+        domestic market.
+      title: Our Mission
 ---
 
