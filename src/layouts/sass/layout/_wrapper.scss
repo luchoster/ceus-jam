@@ -134,6 +134,7 @@
   @include modifier('green') {
     @include wrapper-edges-color(#2ecc40);
     background-color: #2ecc40;
+    border: 1px solid #2ecc40;
   }
 
   &:before,
