@@ -55,9 +55,9 @@ export default class Home extends React.Component {
         <section id="content-wrapper">
           <section className="panel panel--off-white">
             <div className="inner">
-              <section className="spotlights">
+              <section className="columns spotlights">
                 {mapIndexed((item, index) => (
-                  <article key={index}>
+                  <article key={index} className="column">
                     <header className="major">
                       <p>{item.subtitle}</p>
                       <h2>{item.title}</h2>
@@ -78,23 +78,23 @@ export default class Home extends React.Component {
         </section>
         <section className="panel panel--green cta">
           <div className="inner">
-            <ul className="features">
-              <li>
+            <ul className="features columns">
+              <li className="column">
                 <span className="icon fa major fa-bar-chart" />
                 <h4>Placerat</h4>
                 <p>Lorem ipsum dolor sit amet nullam et consequat.</p>
               </li>
-              <li>
+              <li className="column">
                 <span className="icon fa major fa-paper-plane-o" />
                 <h4>Libero</h4>
                 <p>Lorem ipsum dolor sit amet nullam et consequat.</p>
               </li>
-              <li>
+              <li className="column">
                 <span className="icon fa major fa-area-chart" />
                 <h4>Solicitu</h4>
                 <p>Lorem ipsum dolor sit amet nullam et consequat.</p>
               </li>
-              <li>
+              <li className="column">
                 <span className="icon fa major fa-file-image-o" />
                 <h4>Tempor</h4>
                 <p>Lorem ipsum dolor sit amet nullam et consequat.</p>
