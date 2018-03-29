@@ -9,8 +9,8 @@
 #banner {
   background-image: linear-gradient(
       to top,
-      rgba(71, 46, 104, 0.9),
-      rgba(71, 46, 104, 0.9)
+      rgba(43, 90, 150, 0.9),
+      rgba(43, 90, 150, 0.9)
     ),
     url(../assets/imgs/vegas.jpg);
   background-attachment: fixed;
@@ -20,6 +20,18 @@
   padding: 16em 3em;
   position: relative;
   text-align: center;
+  &:after {
+    pointer-events: none;
+    content: '';
+    display: block;
+    background-color: #23436b;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
   .inner {
     margin: 0 auto;
     width: _size(inner);

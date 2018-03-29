@@ -1,9 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export const HomePageTemplate = ({ title, content, contentComponent }) => {
-  const PageContent = contentComponent || Content
-
+export const HomePageTemplate = ({ title }) => {
   return <section className="section section--gradient">Home Page</section>
 }
 
