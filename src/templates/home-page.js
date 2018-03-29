@@ -1,12 +1,25 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-export const HomePageTempate = ({}) => <section>hi</section>
+export const AboutPageTemplate = ({ title, content, contentComponent }) => {
+  const PageContent = contentComponent || Content
 
-export const HomePageQuery = graphql`
+  return <section className="section section--gradient">Home Page</section>
+}
+
+const HomePage = ({ data }) => {
+  const { markdownRemark: post } = data
+
+  return <HomePageTemplate title={post.frontmatter.title} />
+}
+
+export default HomePage
+
+export const homePageQuery = graphql`
   query HomePage($id: String!) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
-        templateKey
+        title
       }
     }
   }
