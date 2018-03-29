@@ -57,7 +57,7 @@ export default class Home extends React.Component {
             <div className="inner">
               <section className="spotlights">
                 {mapIndexed((item, index) => (
-                  <article>
+                  <article key={index}>
                     <header className="major">
                       <p>{item.subtitle}</p>
                       <h2>{item.title}</h2>
