@@ -127,6 +127,10 @@
     @include wrapper-edges-color(white);
     background-color: #fff;
   }
+  @include modifier('off-white') {
+    @include wrapper-edges-color(#f5f8fa);
+    background-color: #f5f8fa;
+  }
   @include modifier('green') {
     @include wrapper-edges-color(#2ecc40);
     background-color: #2ecc40;

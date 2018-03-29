@@ -53,7 +53,7 @@ export default class Home extends React.Component {
           ))(page.hero)}
         </Slider>
         <section id="content-wrapper">
-          <section className="panel panel--white">
+          <section className="panel panel--off-white">
             <div className="inner">
               <section className="spotlights">
                 {mapIndexed((item, index) => (
