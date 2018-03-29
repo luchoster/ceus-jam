@@ -25,11 +25,8 @@ body {
 }
 
 body {
-  background-image: linear-gradient(
-      to top,
-      rgba(43, 90, 150, 0.9),
-      rgba(43, 90, 150, 0.9)
-    ),
+  background-image: url(../assets/imgs/sq-pattern.png),
+    linear-gradient(to top, rgba(43, 90, 150, 0.9), rgba(43, 90, 150, 0.9)),
     url(../assets/imgs/vegas.jpg);
   background-attachment: fixed;
   background-position: center center;

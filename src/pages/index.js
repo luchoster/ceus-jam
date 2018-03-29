@@ -3,6 +3,8 @@ import React from 'react'
 import Link from 'gatsby-link'
 import Marked from 'marked'
 import Slider from 'react-slick'
+import LogoVertical from '../assets/imgs/logo.png'
+import SqBg from '../assets/imgs/sq-pattern.png'
 import {
   createMarkup,
   notNilOrEmpty,
@@ -34,7 +36,7 @@ export default class Home extends React.Component {
             <section
               id="banner"
               style={{
-                backgroundImage: `linear-gradient(to top, rgba(43, 90, 150, 0.9), rgba(43, 90, 150, 0.9)), url(${
+                backgroundImage: `url(${SqBg}),linear-gradient(to top, rgba(43, 90, 150, 0.9), rgba(43, 90, 150, 0.9)), url(${
                   item.image
                 })`,
               }}
@@ -42,7 +44,7 @@ export default class Home extends React.Component {
             >
               <div className="inner">
                 <div className="logo">
-                  <span className="icon fa-diamond" />
+                  <img src={LogoVertical} alt="CompuExpress Logo" />
                 </div>
                 <h2>{item.heading}</h2>
                 <p>{item.text}</p>
@@ -60,12 +62,12 @@ export default class Home extends React.Component {
                       <p>{item.subtitle}</p>
                       <h2>{item.title}</h2>
                     </header>
-                    <div dangerouslySetInnerHTML={createMarkup(item.text)} />
+                    <p>{item.text}</p>
                     <ul className="actions">
                       <li>
-                        <a href={item.link} className="button">
+                        <Link to={item.link} className="button">
                           More
-                        </a>{' '}
+                        </Link>
                       </li>
                     </ul>
                   </article>
