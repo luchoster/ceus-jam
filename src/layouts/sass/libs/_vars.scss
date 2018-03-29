@@ -1,6 +1,6 @@
 // Misc.
 $misc: (
-  z-index-base: 10000,
+  z-index-base: 1,
   max-wrapper-styles: 6
 );
 
@@ -26,10 +26,10 @@ $font: (
   family: ('Quicksand', Helvetica, sans-serif),
   family-fixed: ('Raleway', monospace),
   family-heading: ('Quicksand', Helvetica, sans-serif),
-  weight: 300,
-  weight-bold: 600,
-  weight-heading: 200,
-  weight-heading-bold: 700,
+  weight: 3,
+  weight-bold: 6,
+  weight-heading: 2,
+  weight-heading-bold: 7,
   kern-heading: 0.1em
 );
 

@@ -4,16 +4,11 @@
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
 
-/* Basic */
+// Basic
 
 // MSIE: Required for IEMobile.
 @-ms-viewport {
   width: device-width;
-}
-
-// MSIE: Prevents scrollbar from overlapping content.
-body {
-  -ms-overflow-style: scrollbar;
 }
 
 // Ensures page width is always >=320px.
@@ -25,24 +20,26 @@ body {
 }
 
 body {
-  background-image: url(../assets/imgs/sq-pattern.png),
-    linear-gradient(to top, rgba(43, 90, 150, 0.9), rgba(43, 90, 150, 0.9)),
-    url(../assets/imgs/vegas-sign.jpg);
   background-attachment: fixed;
+  background-image: url('../assets/imgs/sq-pattern.png'),
+    linear-gradient(to top, rgba(43, 90, 150, 0.9), rgba(43, 90, 150, 0.9)),
+    url('../assets/imgs/vegas-sign.jpg');
   background-position: center center;
   background-size: auto, cover;
-  color: #fff;
+  color: white;
   font-family: 'Quicksand', Helvetica, sans-serif;
   font-size: 14pt;
   font-weight: 400;
   line-height: 1.625;
+  // MSIE: Prevents scrollbar from overlapping content.
+  -ms-overflow-style: scrollbar;
 
   // Prevents animation/transition "flicker" on page load.
   // Automatically added/removed by js/main.js.
   &.is-loading {
     *,
-    *:before,
-    *:after {
+    *::before,
+    *::after {
       @include vendor('animation', 'none !important');
       @include vendor('transition', 'none !important');
     }
