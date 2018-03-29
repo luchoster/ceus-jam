@@ -2,6 +2,7 @@ import * as R from 'ramda'
 import React from 'react'
 import Link from 'gatsby-link'
 import Marked from 'marked'
+import Slider from 'react-slick'
 import { notNilOrEmpty, mapIndexed, rawMarkup } from '../lib/helpers'
 
 export default class Home extends React.Component {
@@ -22,62 +23,73 @@ export default class Home extends React.Component {
     )[0].node.frontmatter
 
     return (
-      <main id="main">
-        <section id="banner">
-          <div className="inner">
-            <div className="logo">
-              <span className="icon fa-diamond" />
-            </div>
-            <h2>{page.intro.about.title}</h2>
-            <p>
-              Another free + fully responsive site template by{' '}
-              <a href="http://html5up.net">HTML5 UP</a>
-            </p>
-          </div>
-        </section>
-        <section id="one" class="wrapper style1">
-          <div class="inner">
-            <section class="spotlights">
-              <article>
-                <header class="major">
-                  <p>Magna</p>
-                  <h2>Dolor sit amet vivamus</h2>
-                </header>
-                <p>
-                  Phasellus in ante vitae nibh porttitor tempus vitae ut ante.
-                  Vestibulum blandit ex a elementum viverra. Sed quat diam,
-                  aliquet tempus felis nisl at lacus.
-                </p>
-                <ul class="actions">
-                  <li>
-                    <a href="#" class="button">
-                      More
-                    </a>{' '}
-                  </li>
-                </ul>
-              </article>
-              <article>
-                <header class="major">
-                  <p>Lorem</p>
-                  <h2>Ipsum dolor sit amet</h2>
-                </header>
-                <p>
-                  Phasellus in ante vitae nibh porttitor tempus vitae ut ante.
-                  Vestibulum blandit ex a elementum viverra. Sed quat diam,
-                  aliquet tempus felis nisl at lacus.
-                </p>
-                <ul class="actions">
-                  <li>
-                    <a href="#" class="button">
-                      More
-                    </a>
-                  </li>
-                </ul>
-              </article>
+      <React.Fragment>
+        <Slider>
+          {mapIndexed((item, index) => (
+            <section
+              id="banner"
+              style={{
+                backgroundImage: `linear-gradient(to top, rgba(43, 90, 150, 0.9), rgba(43, 90, 150, 0.9)), url(${
+                  item.image
+                })`,
+              }}
+              key={index}
+            >
+              <div className="inner">
+                <div className="logo">
+                  <span className="icon fa-diamond" />
+                </div>
+                <h2>{item.heading}</h2>
+                <p>{item.text}</p>
+              </div>
             </section>
-          </div>
+          ))(page.hero)}
+        </Slider>
+        <section id="wrapper">
+          <section id="one" className="wrapper style1">
+            <div className="inner">
+              <section className="spotlights">
+                <article>
+                  <header className="major">
+                    <p>Magna</p>
+                    <h2>Dolor sit amet vivamus</h2>
+                  </header>
+                  <p>
+                    Phasellus in ante vitae nibh porttitor tempus vitae ut ante.
+                    Vestibulum blandit ex a elementum viverra. Sed quat diam,
+                    aliquet tempus felis nisl at lacus.
+                  </p>
+                  <ul className="actions">
+                    <li>
+                      <a href="#" className="button">
+                        More
+                      </a>{' '}
+                    </li>
+                  </ul>
+                </article>
+                <article>
+                  <header className="major">
+                    <p>Lorem</p>
+                    <h2>Ipsum dolor sit amet</h2>
+                  </header>
+                  <p>
+                    Phasellus in ante vitae nibh porttitor tempus vitae ut ante.
+                    Vestibulum blandit ex a elementum viverra. Sed quat diam,
+                    aliquet tempus felis nisl at lacus.
+                  </p>
+                  <ul className="actions">
+                    <li>
+                      <a href="#" className="button">
+                        More
+                      </a>
+                    </li>
+                  </ul>
+                </article>
+              </section>
+            </div>
+          </section>
         </section>
-      </main>
+      </React.Fragment>
     )
   }
 }
@@ -89,6 +101,11 @@ export const pageQuery = graphql`
         node {
           frontmatter {
             templateKey
+            hero {
+              heading
+              image
+              text
+            }
             intro {
               about {
                 title

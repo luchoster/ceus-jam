@@ -25,11 +25,16 @@ body {
 }
 
 body {
+  background-image: linear-gradient(
+      to top,
+      rgba(43, 90, 150, 0.9),
+      rgba(43, 90, 150, 0.9)
+    ),
+    url(../assets/imgs/vegas.jpg);
+  background-attachment: fixed;
+  background-position: center center;
   background-size: auto, cover;
-
-  background-attachment: fixed, fixed;
-
-  background-position: center, center;
+  color: #fff;
 
   // Prevents animation/transition "flicker" on page load.
   // Automatically added/removed by js/main.js.
