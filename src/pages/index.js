@@ -3,7 +3,12 @@ import React from 'react'
 import Link from 'gatsby-link'
 import Marked from 'marked'
 import Slider from 'react-slick'
-import { notNilOrEmpty, mapIndexed, rawMarkup } from '../lib/helpers'
+import {
+  createMarkup,
+  notNilOrEmpty,
+  mapIndexed,
+  rawMarkup,
+} from '../lib/helpers'
 
 export default class Home extends React.Component {
   render() {
@@ -45,49 +50,55 @@ export default class Home extends React.Component {
             </section>
           ))(page.hero)}
         </Slider>
-        <section id="wrapper">
-          <section id="one" className="wrapper style1">
+        <section id="content-wrapper">
+          <section className="panel panel--white">
             <div className="inner">
               <section className="spotlights">
-                <article>
-                  <header className="major">
-                    <p>Magna</p>
-                    <h2>Dolor sit amet vivamus</h2>
-                  </header>
-                  <p>
-                    Phasellus in ante vitae nibh porttitor tempus vitae ut ante.
-                    Vestibulum blandit ex a elementum viverra. Sed quat diam,
-                    aliquet tempus felis nisl at lacus.
-                  </p>
-                  <ul className="actions">
-                    <li>
-                      <a href="#" className="button">
-                        More
-                      </a>{' '}
-                    </li>
-                  </ul>
-                </article>
-                <article>
-                  <header className="major">
-                    <p>Lorem</p>
-                    <h2>Ipsum dolor sit amet</h2>
-                  </header>
-                  <p>
-                    Phasellus in ante vitae nibh porttitor tempus vitae ut ante.
-                    Vestibulum blandit ex a elementum viverra. Sed quat diam,
-                    aliquet tempus felis nisl at lacus.
-                  </p>
-                  <ul className="actions">
-                    <li>
-                      <a href="#" className="button">
-                        More
-                      </a>
-                    </li>
-                  </ul>
-                </article>
+                {mapIndexed((item, index) => (
+                  <article>
+                    <header className="major">
+                      <p>{item.subtitle}</p>
+                      <h2>{item.title}</h2>
+                    </header>
+                    <div dangerouslySetInnerHTML={createMarkup(item.text)} />
+                    <ul className="actions">
+                      <li>
+                        <a href={item.link} className="button">
+                          More
+                        </a>{' '}
+                      </li>
+                    </ul>
+                  </article>
+                ))(page.intro.spotlight)}
               </section>
             </div>
           </section>
+        </section>
+        <section className="panel panel--green cta">
+          <div className="inner">
+            <ul className="features">
+              <li>
+                <span className="icon fa major fa-bar-chart" />
+                <h4>Placerat</h4>
+                <p>Lorem ipsum dolor sit amet nullam et consequat.</p>
+              </li>
+              <li>
+                <span className="icon fa major fa-paper-plane-o" />
+                <h4>Libero</h4>
+                <p>Lorem ipsum dolor sit amet nullam et consequat.</p>
+              </li>
+              <li>
+                <span className="icon fa major fa-area-chart" />
+                <h4>Solicitu</h4>
+                <p>Lorem ipsum dolor sit amet nullam et consequat.</p>
+              </li>
+              <li>
+                <span className="icon fa major fa-file-image-o" />
+                <h4>Tempor</h4>
+                <p>Lorem ipsum dolor sit amet nullam et consequat.</p>
+              </li>
+            </ul>
+          </div>
         </section>
       </React.Fragment>
     )
@@ -109,6 +120,12 @@ export const pageQuery = graphql`
             intro {
               about {
                 title
+              }
+              spotlight {
+                title
+                subtitle
+                text
+                link
               }
             }
           }

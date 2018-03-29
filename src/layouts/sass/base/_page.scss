@@ -35,6 +35,10 @@ body {
   background-position: center center;
   background-size: auto, cover;
   color: #fff;
+  font-family: 'Quicksand', Helvetica, sans-serif;
+  font-size: 14pt;
+  font-weight: 400;
+  line-height: 1.625;
 
   // Prevents animation/transition "flicker" on page load.
   // Automatically added/removed by js/main.js.

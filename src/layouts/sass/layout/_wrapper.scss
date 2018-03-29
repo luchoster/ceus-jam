@@ -119,11 +119,18 @@
   }
 }
 
-.wrapper {
-  background-color: _palette(bg);
-  margin: _size(wrapper-edges, small) 0;
+.panel {
+  color: #222;
   position: relative;
-  @include wrapper-edges-color(_palette(bg));
+  padding: 6em 0 4em 0;
+  @include modifier('white') {
+    @include wrapper-edges-color(white);
+    background-color: #fff;
+  }
+  @include modifier('green') {
+    @include wrapper-edges-color(#2ecc40);
+    background-color: #2ecc40;
+  }
 
   &:before,
   &:after {
@@ -158,9 +165,9 @@
   }
 
   .inner {
-    @include padding(3em, 0);
     margin: 0 auto;
-    width: _size(inner);
+    max-width: 75em;
+    width: calc(100% - 4em);
   }
 
   @for $i from 2 through _misc(max-wrapper-styles) {

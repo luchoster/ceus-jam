@@ -20,7 +20,7 @@
 
 // for BEM to either be modifier or element
 @mixin modifier($element) {
-  &__#{$element} {
+  &--#{$element} {
     @content;
   }
 }

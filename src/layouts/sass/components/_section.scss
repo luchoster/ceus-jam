@@ -6,8 +6,56 @@
 
 /* Section/Article */
 
-	section, article {
-		&.special {
-			text-align: center;
-		}
-	}
+section,
+article {
+  &.cta {
+    text-align: center;
+  }
+}
+
+.spotlights {
+  @include vendor('display', 'flex');
+  @include vendor('justify-content', 'center');
+  @include vendor('flex-wrap', 'wrap');
+  margin-bottom: 4em;
+  article {
+    background-color: #fff;
+    padding: 3.5em 4em 1.5em 4em;
+    box-shadow: 0 1em 5em rgba(0, 0, 0, 0.05);
+    margin-bottom: 3em;
+    width: 48%;
+    &:nth-child(even) {
+      margin-left: 4%;
+    }
+    header {
+      &.major {
+        margin-bottom: 2.7em;
+        padding-bottom: 2.7em;
+        position: relative;
+        &:after {
+          background-color: rgba(99, 116, 133, 0.25);
+          margin-left: -4em;
+          bottom: 0;
+          content: '';
+          height: 1px;
+          left: 0;
+          position: absolute;
+          width: 7em;
+        }
+        p {
+          color: #39cccc;
+          font-weight: 400;
+          margin-bottom: 0.25em;
+          text-transform: uppercase;
+        }
+        h2 {
+          color: #111;
+          margin-bottom: 0;
+          font-size: 1.75em;
+          font-weight: 500;
+          font-family: Raleway;
+        }
+      }
+    }
+  }
+}
