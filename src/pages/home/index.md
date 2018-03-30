@@ -49,9 +49,5 @@ cta:
     link: /
     text: Lorem ipsum dolor sit amet nullam et consequat.
     title: Solicitu
-  - icon: file-image-o
-    link: /
-    text: Lorem ipsum dolor sit amet nullam et consequat.
-    title: Tempor
 ---
 
