@@ -44,7 +44,7 @@ export default class Home extends React.Component {
             >
               <div className="inner">
                 <div className="logo">
-                  <img src={LogoVertical} alt="CompuExpress Logo" />
+                  <i className="fa fa-terminal fa-3x" />
                 </div>
                 <h2>{item.heading}</h2>
                 <p>{item.text}</p>
@@ -79,26 +79,13 @@ export default class Home extends React.Component {
         <section className="panel panel--green cta">
           <div className="inner">
             <ul className="features columns">
-              <li className="column">
-                <span className="icon fa major fa-bar-chart" />
-                <h4>Placerat</h4>
-                <p>Lorem ipsum dolor sit amet nullam et consequat.</p>
-              </li>
-              <li className="column">
-                <span className="icon fa major fa-paper-plane-o" />
-                <h4>Libero</h4>
-                <p>Lorem ipsum dolor sit amet nullam et consequat.</p>
-              </li>
-              <li className="column">
-                <span className="icon fa major fa-area-chart" />
-                <h4>Solicitu</h4>
-                <p>Lorem ipsum dolor sit amet nullam et consequat.</p>
-              </li>
-              <li className="column">
-                <span className="icon fa major fa-file-image-o" />
-                <h4>Tempor</h4>
-                <p>Lorem ipsum dolor sit amet nullam et consequat.</p>
-              </li>
+              {mapIndexed((item, index) => (
+                <li className="column">
+                  <span className={`icon fa major fa-${item.icon}`} />
+                  <h4>{item.title}</h4>
+                  <p>{item.text}</p>
+                </li>
+              ))(page.cta)}
             </ul>
           </div>
         </section>
@@ -129,6 +116,12 @@ export const pageQuery = graphql`
                 text
                 link
               }
+            }
+            cta {
+              icon
+              title
+              text
+              link
             }
           }
         }
