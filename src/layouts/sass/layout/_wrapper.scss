@@ -132,13 +132,18 @@
     background-color: #f5f8fa;
   }
   @include modifier('green') {
-    @include wrapper-edges-color(#2ecc40);
-    background-color: #2ecc40;
-    border: 1px solid #2ecc40;
-    h4 {
+    @include wrapper-edges-color(_palette(lt-accent));
+    background-color: _palette(lt-accent);
+    border: 1px solid _palette(lt-accent);
+    color: _palette(main);
+    h5 {
       font-weight: 700;
       margin-bottom: 0.5em;
       text-transform: uppercase;
+    }
+    &::after {
+      background-color: _palette(lt-accent);
+      left: -1px !important;
     }
   }
 
@@ -178,6 +183,26 @@
     margin: 0 auto;
     max-width: 75em;
     width: calc(100% - 4em);
+    header {
+      &.major {
+        margin-bottom: 0;
+        padding-bottom: 2.7em;
+        position: relative;
+        h2,
+        p {
+          color: _palette(bg) !important;
+        }
+        &:after {
+          background-color: rgba(99, 116, 133, 0.25);
+          bottom: 0;
+          content: '';
+          height: 1px;
+          left: 0;
+          position: absolute;
+          width: 7em;
+        }
+      }
+    }
   }
 
   @for $i from 2 through _misc(max-wrapper-styles) {

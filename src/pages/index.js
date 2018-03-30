@@ -82,11 +82,35 @@ export default class Home extends React.Component {
               {mapIndexed((item, index) => (
                 <li className="column">
                   <span className={`icon fa major fa-${item.icon}`} />
-                  <h4>{item.title}</h4>
-                  <p>{item.text}</p>
+                  <h5>{item.text}</h5>
                 </li>
               ))(page.cta)}
             </ul>
+          </div>
+        </section>
+        <section className="panel panel--white">
+          <div className="inner">
+            <header className="major alt">
+              <p>{page.intro.about.subtitle}</p>
+              <h2>{page.intro.about.title}</h2>
+            </header>
+            <section className="posts">
+              <article className="columns">
+                <span className="image column">
+                  <img src={page.intro.about.image} alt="" />
+                </span>
+                <div className="content column">
+                  <p>{page.intro.about.text}</p>
+                  <ul className="actions">
+                    <li>
+                      <Link to={page.intro.about.link} className="button">
+                        More
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </article>
+            </section>
           </div>
         </section>
       </React.Fragment>
@@ -109,6 +133,10 @@ export const pageQuery = graphql`
             intro {
               about {
                 title
+                subtitle
+                text
+                link
+                image
               }
               spotlight {
                 title

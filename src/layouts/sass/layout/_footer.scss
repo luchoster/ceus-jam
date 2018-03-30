@@ -7,13 +7,16 @@
 /* Footer */
 
 #footer {
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+  padding: 12em 0 2em;
   .inner {
-    @include padding(5em, 0);
     @include vendor('display', 'flex');
-    @include vendor('flex-direction', 'row');
-    @include vendor('flex-wrap', 'wrap');
-    margin: 0 auto;
-    width: _size(inner);
+    margin: 0 auto 3em;
+
+    max-width: 75em;
+    width: calc(100% - 4em);
 
     > * {
       width: 100%;
@@ -22,39 +25,79 @@
     form {
       margin: 0 _size(section-spacing, large) 0 0;
       width: calc(50% - #{_size(section-spacing, large) * 0.5});
+
+      background-color: _palette(dk-accent);
+      color: #ffffff;
+      padding: 4em 3.5em 2em 3.5em;
+      flex-grow: 1;
+      margin-bottom: 0;
+
+      label {
+        border: 0;
+        clip: rect(0, 0, 0, 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+      }
+      input[type='submit'] {
+        color: _palette(fg) !important;
+        box-shadow: inset 0 0 0 2px rgba(99, 116, 133, 0.75);
+      }
     }
 
     .contact {
-      width: calc(50% - #{_size(section-spacing, large) * 0.5});
-    }
-
-    .copyright {
-      border-top: solid 2px _palette(border);
-      list-style: none;
-      margin: (_size(element-margin) * 2) 0 _size(element-margin) 0;
-      padding: _size(element-margin) 0 0 0;
-      width: 100%;
-
+      padding: 4em 2.5em 2em 2.5em;
+      background-color: #fff;
+      list-style-type: none;
+      margin-bottom: 0;
+      width: 35%;
       li {
-        border-left: solid 2px _palette(border);
-        color: _palette(fg-light);
-        display: inline-block;
-        font-size: 0.9em;
-        line-height: 1;
-        margin-left: 1em;
-        padding: 0;
-        padding-left: 1em;
-
-        &:first-child {
-          border-left: 0;
-          margin-left: 0;
-          padding-left: 0;
+        margin-bottom: 2em;
+        padding-bottom: 2em;
+        padding-left: 4em;
+        position: relative;
+        strong {
+          color: #39a288;
+          display: block;
+          margin-bottom: 0.5em;
+          text-transform: uppercase;
         }
-
-        a {
-          color: inherit;
+        &::before {
+          color: rgba(99, 116, 133, 0.25);
+          position: absolute;
+          left: 0;
+          top: -0.15em;
+          font-size: 1.5em;
+        }
+        &::after {
+          background-color: rgba(99, 116, 133, 0.25);
+          bottom: 0;
+          content: '';
+          height: 1px;
+          left: -4em;
+          position: absolute;
+          width: 8em;
+        }
+        &:last-child {
+          margin-bottom: 0;
+          &:after {
+            display: none;
+          }
         }
       }
+      // width: calc(50% - #{_size(section-spacing, large) * 0.5});
+    }
+  }
+  .copyright {
+    color: #bbb;
+    margin-bottom: 3em;
+    padding: 0;
+    text-align: center;
+    a {
+      color: inherit;
     }
   }
 
