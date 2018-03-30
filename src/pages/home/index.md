@@ -36,5 +36,22 @@ intro:
         meet their needs and increase their business opportunities in the
         domestic market.
       title: Our Mission
+cta:
+  - icon: bar-chart
+    link: /
+    text: Lorem ipsum dolor sit amet nullam et consequat.
+    title: PLACERAT
+  - icon: paper-plane-o
+    link: /
+    text: Lorem ipsum dolor sit amet nullam et consequat.
+    title: LIBERO
+  - icon: area-chart
+    link: /
+    text: Lorem ipsum dolor sit amet nullam et consequat.
+    title: Solicitu
+  - icon: file-image-o
+    link: /
+    text: Lorem ipsum dolor sit amet nullam et consequat.
+    title: Tempor
 ---
 
