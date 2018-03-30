@@ -37,17 +37,23 @@ intro:
         domestic market.
       title: Our Mission
 cta:
-  - icon: bar-chart
+  - icon: code
     link: /
-    text: Lorem ipsum dolor sit amet nullam et consequat.
+    text: >-
+      We develop solutions to integrate a world of opportunities with your
+      company. We guarantee the success and satisfaction in your project.
     title: PLACERAT
-  - icon: paper-plane-o
+  - icon: cloud
     link: /
-    text: Lorem ipsum dolor sit amet nullam et consequat.
+    text: >-
+      We develop solutions to integrate a world of opportunities with your
+      company. We guarantee the success and satisfaction in your project.
     title: LIBERO
-  - icon: area-chart
+  - icon: terminal
     link: /
-    text: Lorem ipsum dolor sit amet nullam et consequat.
+    text: >-
+      Let us advise you and provide a solution to your computing needs for every
+      area of your business.  We make the most of available resources.
     title: Solicitu
 ---
 
