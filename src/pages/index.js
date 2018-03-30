@@ -80,7 +80,7 @@ export default class Home extends React.Component {
           <div className="inner">
             <ul className="features columns">
               {mapIndexed((item, index) => (
-                <li className="column">
+                <li className="column" key={index}>
                   <span className={`icon fa major fa-${item.icon}`} />
                   <h5>{item.text}</h5>
                 </li>

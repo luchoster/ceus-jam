@@ -29,6 +29,7 @@
     "react-helmet": "^5.2.0",
     "react-lightbox-component": "^0.2.0",
     "react-slick": "^0.21.0",
+    "react-spring": "^3.1.0",
     "react-tap-event-plugin": "^3.0.2",
     "slick-carousel": "^1.8.1"
   },
