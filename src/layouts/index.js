@@ -27,7 +27,7 @@ class TemplateWrapper extends React.Component {
         <Helmet title="Home | CompuExpress US" />
         <Navbar toggleNav={this._onToggleNav} />
         {/* Menu */}
-        <NavMenu showNav={this.state.showNav} />
+        <NavMenu showNav={this.state.showNav} toggleNav={this._onToggleNav} />
         <div id="page-wrapper">{this.props.children()}</div>
         <Footer />
       </React.Fragment>
