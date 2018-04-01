@@ -58,6 +58,16 @@ collections:
               {label: Text, name: text, widget: string},
               {label: Link, name: link, widget: string}
             ]}
+      - file: "src/pages/portfolio/index.md"
+        label: "Portfolio"
+        name: "portfolio"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "portfolio-page"}
+          - {label: Clients, name: client, widget: list, fields: [
+              {label: Name, name: name, widget: string},
+              {label: Image, name: image, widget: image},
+              {label: Link, name: link, widget: string}
+            ]}
       - file: "src/pages/services/index.md"
         label: "Services"
         name: "services"
