@@ -40,8 +40,9 @@ cta:
   - icon: code
     link: /
     text: >-
-      We develop solutions to integrate a world of opportunities with your
-      company. We guarantee the success and satisfaction in your project.
+      We are experienced in many areas of IT and have successfully generated
+      projects with solutions tailored to the needs and requirements of our
+      clients.
     title: PLACERAT
   - icon: cloud
     link: /
