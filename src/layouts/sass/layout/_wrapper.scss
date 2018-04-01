@@ -146,6 +146,30 @@
       left: -1px !important;
     }
   }
+  @include modifier('services') {
+    &:first-child {
+      &::after {
+        background-color: _palette(green1);
+        left: -1px !important;
+      }
+    }
+    &:nth-child(odd) {
+      @include wrapper-edges-color(_palette(green1));
+      background-color: _palette(green1);
+      border: 1px solid _palette(green1);
+      color: _palette(main);
+    }
+    &:nth-child(even) {
+      @include wrapper-edges-color(_palette(green3));
+      background-color: _palette(green3);
+      border: 1px solid _palette(green3);
+      color: _palette(main);
+      &::after {
+        background-color: _palette(green3);
+        left: -1px !important;
+      }
+    }
+  }
 
   &:before,
   &:after {
@@ -216,24 +240,24 @@
   }
 
   &.spotlight {
-    @include wrapper-edges-color(_palette(accent));
-    background-color: _palette(accent);
-
     .inner {
       @include vendor('display', 'flex');
       @include vendor('align-items', 'center');
       @include vendor('flex-direction', 'row');
     }
+    h2 {
+      color: _palette(fg);
+    }
 
     .image {
-      border-radius: 100%;
+      border-radius: 50px;
       margin: 0 _size(section-spacing, large) _size(element-margin) 0;
-      width: 22em;
+      width: 35em;
       overflow: hidden;
       -ms-flex: 1;
 
       img {
-        border-radius: 100%;
+        border-radius: 50px;
         width: 100%;
       }
     }
@@ -241,6 +265,7 @@
     .content {
       width: 100%;
       -ms-flex: 2;
+      color: _palette(fg);
     }
 
     &:nth-child(2n - 1) {
@@ -256,7 +281,13 @@
 
     @for $i from 2 through _misc(max-wrapper-styles) {
       $j: 3 * ($i - 1);
-      $color: saturate(darken(_palette(accent), $j), $j * 0.5);
+      $color: saturate(darken(_palette(bg), $j), $j * 0.5);
+      // @include wrapper-edges-color(_palette('green' + $i));
+      // background-color: _palette('green' + $i);
+      // &::after {
+      //   background-color: _palette('green' + $i);
+      //   left: -1px !important;
+      // }
 
       &.style#{$i} {
         background-color: $color;

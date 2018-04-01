@@ -19,28 +19,24 @@ const Menu = (props, styles) => (
     <div className="inner">
       <ul className="links">
         <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/blog">Blog</Link>
-        </li>
-        <li>
-          <Link to="">Generic</Link>
-        </li>
-        <li>
-          <Link to="/">Elements</Link>
-        </li>
-      </ul>
-      <ul className="actions vertical">
-        <li>
-          <Link to="#" className="button special fit">
-            Get Started
+          <Link onTouchTap={props.parentProps.toggleNav} to="/">
+            Home
           </Link>
         </li>
         <li>
-          <a href="#" className="button fit">
-            Log In
-          </a>
+          <Link onTouchTap={props.parentProps.toggleNav} to="/about">
+            About
+          </Link>
+        </li>
+        <li>
+          <Link onTouchTap={props.parentProps.toggleNav} to="/services">
+            Services
+          </Link>
+        </li>
+        <li>
+          <Link onTouchTap={props.parentProps.toggleNav} to="/">
+            Gallery
+          </Link>
         </li>
       </ul>
     </div>
