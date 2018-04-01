@@ -24,18 +24,13 @@ const Menu = (props, styles) => (
           </Link>
         </li>
         <li>
-          <Link onTouchTap={props.parentProps.toggleNav} to="/about">
-            About
-          </Link>
-        </li>
-        <li>
           <Link onTouchTap={props.parentProps.toggleNav} to="/services">
             Services
           </Link>
         </li>
         <li>
-          <Link onTouchTap={props.parentProps.toggleNav} to="/">
-            Gallery
+          <Link onTouchTap={props.parentProps.toggleNav} to="/portfolio">
+            Portfolio
           </Link>
         </li>
       </ul>
@@ -45,7 +40,7 @@ const Menu = (props, styles) => (
     </a>
   </animated.nav>
 )
-const Null = () => <div />
+const Null = () => <div key="12345" />
 
 const NavMenu = props => (
   <Transition

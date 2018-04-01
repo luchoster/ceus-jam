@@ -94,12 +94,12 @@ export default class Home extends React.Component {
               <p>{page.intro.about.subtitle}</p>
               <h2>{page.intro.about.title}</h2>
             </header>
-            <section className="posts">
+            <section className="posts section--about">
               <article className="columns">
-                <span className="image column">
+                <span className="image ">
                   <img src={page.intro.about.image} alt="" />
                 </span>
-                <div className="content column">
+                <div className="content">
                   <p>{page.intro.about.text}</p>
                   <ul className="actions">
                     <li>

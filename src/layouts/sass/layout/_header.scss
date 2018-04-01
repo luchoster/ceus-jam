@@ -110,6 +110,11 @@
     height: 2.75em;
     line-height: 2.75em;
 
+    @include modifier('logo') {
+      height: 55px !important;
+      padding: 10px 0;
+    }
+
     nav {
       top: 0;
       right: 0;
@@ -135,6 +140,12 @@
   }
 
   @include breakpoint(xsmall) {
+    .header {
+      @include modifier('logo') {
+        height: 45px !important;
+        padding: 10px 0;
+      }
+    }
     nav {
       a {
         &[href='#menu'] {

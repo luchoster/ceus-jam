@@ -171,6 +171,16 @@
     }
   }
 
+  .section {
+    @include modifier('about') {
+      @include breakpoint(small) {
+        .image {
+          order: 0;
+        }
+      }
+    }
+  }
+
   &:before,
   &:after {
     background-repeat: no-repeat;

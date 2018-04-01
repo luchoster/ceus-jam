@@ -60,5 +60,8 @@ body {
       order: 99;
       margin: 0 0 2em 2em;
     }
+    @include breakpoint(small) {
+      @include vendor('flex-wrap', 'wrap');
+    }
   }
 }
