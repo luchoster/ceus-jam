@@ -44,6 +44,9 @@ body {
       @include vendor('transition', 'none !important');
     }
   }
+  .blur {
+    filter: blur(10px);
+  }
 }
 
 .posts {

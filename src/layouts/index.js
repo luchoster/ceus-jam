@@ -28,7 +28,12 @@ class TemplateWrapper extends React.Component {
         <Navbar toggleNav={this._onToggleNav} />
         {/* Menu */}
         <NavMenu showNav={this.state.showNav} toggleNav={this._onToggleNav} />
-        <div id="page-wrapper">{this.props.children()}</div>
+        <div
+          id="page-wrapper"
+          className={`animated ${this.state.showNav ? 'blur' : ''}`}
+        >
+          {this.props.children()}
+        </div>
         <Footer />
       </React.Fragment>
     )

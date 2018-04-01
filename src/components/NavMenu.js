@@ -10,7 +10,12 @@ const defaultStyles = {
 }
 
 const Menu = (props, styles) => (
-  <animated.nav id="menu" style={{ ...defaultStyles, ...styles }}>
+  <animated.nav
+    className={`animated
+      ${props.parentProps.showNav ? 'fadeIn' : 'fadeOut'}
+    `}
+    id="menu"
+  >
     <div className="inner">
       <ul className="links">
         <li>
@@ -46,26 +51,16 @@ const Menu = (props, styles) => (
 )
 const Null = () => <div />
 
-const NavMenu = props =>
-  props.showNav && (
-    <Spring
-      from={{ opacity: 0 }}
-      to={{ opacity: 1 }}
-      config={{ tension: 280, friction: 160 }}
-      parentProps={props}
-    >
-      {Menu}
-    </Spring>
-  )
-{
-  // <Transition
-  //   native
-  //   from={{ opacity: 0 }}
-  //   enter={{ opacity: 1 }}
-  //   leave={{ opacity: 0 }}
-  //   parentProps={props}
-  // >
-  //   { props.showNav ? Menu : Null }
-  // </Transition>
-}
+const NavMenu = props => (
+  <Transition
+    native
+    from={{ opacity: 0 }}
+    enter={{ opacity: 1 }}
+    leave={{ opacity: 0 }}
+    parentProps={props}
+  >
+    {props.showNav ? Menu : Null}
+  </Transition>
+)
+
 export default NavMenu

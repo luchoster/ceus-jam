@@ -132,9 +132,9 @@
     background-color: #f5f8fa;
   }
   @include modifier('green') {
-    @include wrapper-edges-color(_palette(lt-accent));
-    background-color: _palette(lt-accent);
-    border: 1px solid _palette(lt-accent);
+    @include wrapper-edges-color(_palette(green3));
+    background-color: _palette(green3);
+    border: 1px solid _palette(green3);
     color: _palette(main);
     h5 {
       font-weight: 700;
@@ -142,7 +142,7 @@
       text-transform: uppercase;
     }
     &::after {
-      background-color: _palette(lt-accent);
+      background-color: _palette(green3);
       left: -1px !important;
     }
   }

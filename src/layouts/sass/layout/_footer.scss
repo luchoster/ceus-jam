@@ -26,7 +26,7 @@
       margin: 0 _size(section-spacing, large) 0 0;
       width: calc(50% - #{_size(section-spacing, large) * 0.5});
 
-      background-color: _palette(dk-accent);
+      background-color: _palette(green2);
       color: #ffffff;
       padding: 4em 3.5em 2em 3.5em;
       flex-grow: 1;
@@ -44,7 +44,7 @@
       }
       input[type='submit'] {
         color: _palette(fg) !important;
-        box-shadow: inset 0 0 0 2px rgba(99, 116, 133, 0.75);
+        box-shadow: inset 0 0 0 2px _palette(green1);
       }
     }
 
