@@ -16,7 +16,7 @@ client:
   - image: /img/cut-above.png
     link: 'https://cutaboveagency.com'
     name: Cut Above Agency
-  - image: /img/tni.png
+  - image: /img/lib.png
     link: 'https://lifeisbeautiful.com/'
     name: Life Is Beautiful
   - image: /img/tni.png
