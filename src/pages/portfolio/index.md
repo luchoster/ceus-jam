@@ -16,12 +16,6 @@ client:
   - image: /img/cut-above.png
     link: 'https://cutaboveagency.com'
     name: Cut Above Agency
-  - image: /img/lib.png
-    link: 'https://lifeisbeautiful.com/'
-    name: Life Is Beautiful
-  - image: /img/tni.png
-    link: 'https://thenevadaindependent.com/'
-    name: The Nevada Independent
   - image: /img/fortis.png
     link: 'http://fortis.vegas/'
     name: Fortis Advisors
