@@ -17,7 +17,6 @@ class TemplateWrapper extends React.Component {
   }
 
   _onToggleNav = e => {
-    e.preventDefault()
     this.setState(state => ({ showNav: !state.showNav }))
   }
 

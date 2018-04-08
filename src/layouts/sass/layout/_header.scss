@@ -72,7 +72,7 @@
         margin-left: 0.75em;
       }
 
-      &[href='#menu'] {
+      &.header--menu-link {
         @include icon;
         @include vendor(
           'transition',
@@ -125,7 +125,7 @@
         height: inherit;
         line-height: inherit;
 
-        &[href='#menu'] {
+        &.header--menu-link {
           box-shadow: none;
           padding: 0 1em;
           border-radius: 0;
@@ -148,7 +148,7 @@
     }
     nav {
       a {
-        &[href='#menu'] {
+        &.header--menu-link {
           width: 4em;
           white-space: nowrap;
           text-indent: 4em;
