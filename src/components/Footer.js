@@ -13,9 +13,8 @@ const Footer = () => (
           </li>
         </ul>
         <form
-          name="contact"
+          name="contact-ceusVegas"
           method="POST"
-          action="thank-you"
           netlify
           data-netlify="true"
         >
@@ -39,6 +38,7 @@ const Footer = () => (
               placeholder="Message"
             />
           </div>
+          <div data-netlify-recaptcha />
           <ul className="actions">
             <li>
               <input
