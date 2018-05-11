@@ -12,12 +12,7 @@ const Footer = () => (
             <strong>Email</strong> contact@compuexpress.us
           </li>
         </ul>
-        <form
-          name="contact-ceusVegas"
-          method="POST"
-          netlify
-          data-netlify="true"
-        >
+        <form name="contact-ceusVegas" method="POST" data-netlify="true">
           <h4>Get in touch</h4>
           <div className="columns">
             <div className="column">
