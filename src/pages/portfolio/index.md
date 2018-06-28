@@ -1,6 +1,9 @@
 ---
 templateKey: portfolio-page
 client:
+  - image: /img/srrobots.png
+    link: 'https://srrobots.com/'
+    name: Señor Robots
   - image: /img/apriva.png
     link: 'https://www.apriva.com/'
     name: Apriva Pay
@@ -28,8 +31,5 @@ client:
   - image: /img/vs.png
     link: 'http://valleyspine.net'
     name: Valley Spine
-  - image: /img/srrobots.png
-    link: 'https://srrobots.com/'
-    name: Señor Robots
 ---
 
