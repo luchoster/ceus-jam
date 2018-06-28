@@ -4,6 +4,9 @@ client:
   - image: /img/srrobots.png
     link: 'https://srrobots.com/'
     name: Señor Robots
+  - image: /img/df2md.png
+    link: 'https://dogfood2mydoor.com/'
+    name: Dog Food 2 My Door
   - image: /img/apriva.png
     link: 'https://www.apriva.com/'
     name: Apriva Pay
