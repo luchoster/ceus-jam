@@ -10,9 +10,6 @@ client:
   - image: /img/apriva.png
     link: 'https://www.apriva.com/'
     name: Apriva Pay
-  - image: /img/cutter.png
-    link: 'http://www.cutterlegal.com/'
-    name: Cutter Law
   - image: /img/fixourroads.png
     link: 'http://fixourroadscc.com/'
     name: Fix Our Roads
