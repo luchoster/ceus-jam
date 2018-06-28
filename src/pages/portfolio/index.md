@@ -28,5 +28,8 @@ client:
   - image: /img/vs.png
     link: 'http://valleyspine.net'
     name: Valley Spine
+  - image: /img/srrobots.png
+    link: 'https://srrobots.com/'
+    name: Señor Robots
 ---
 
