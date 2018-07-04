@@ -1,8 +1,11 @@
+import * as R from 'ramda'
 import React from 'react'
 import PropTypes from 'prop-types'
 import Features from '../components/Features'
 import Testimonials from '../components/Testimonials'
 import Pricing from '../components/Pricing'
+
+import { Products } from '../lib/moltin'
 
 export const ProductPageTemplate = ({
   image,
@@ -16,7 +19,7 @@ export const ProductPageTemplate = ({
   pricing,
 }) => (
   <section className="section section--gradient">
-    <div className="container">
+    <div className="panel panel--white">
       <div className="section">
         <div className="columns">
           <div className="column is-10 is-offset-1">
@@ -97,6 +100,7 @@ export const ProductPageTemplate = ({
               </h2>
               <p className="is-size-5">{pricing.description}</p>
               <Pricing data={pricing.plans} />
+              {}
             </div>
           </div>
         </div>

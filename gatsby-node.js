@@ -2,6 +2,15 @@ const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 
+// To make Moltin skd work
+exports.modifyWebpackConfig = ({ config, stage }) => {
+  config.merge({
+    node: { fs: 'empty', child_process: 'empty' },
+  })
+
+  return config
+}
+
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators
 
