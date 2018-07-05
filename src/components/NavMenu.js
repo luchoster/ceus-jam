@@ -40,7 +40,7 @@ const Menu = (props, styles) => (
     </a>
   </animated.nav>
 )
-const Null = () => <div key="12345" />
+const Null = () => <div key={Math.random() * 0.123473515} />
 
 const NavMenu = props => (
   <Transition
