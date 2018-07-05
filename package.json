@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-netlify-cms",
-  "description": "Example Gatsby, and Netlify CMS project",
+  "name": "ceus-vegas",
+  "description": "Website for CompuExpress US",
   "version": "1.1.0",
-  "author": "Austin Green",
+  "author": "CompuExpress US",
   "dependencies": {
     "@moltin/sdk": "^3.12.1",
     "animate.css": "^3.6.1",
@@ -35,9 +35,7 @@
     "react-tap-event-plugin": "^3.0.2",
     "slick-carousel": "^1.8.1"
   },
-  "keywords": [
-    "gatsby"
-  ],
+  "keywords": ["gatsby"],
   "license": "MIT",
   "main": "n/a",
   "scripts": {
@@ -45,7 +43,8 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "serve": "gatsby serve",
-    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
+    "format":
+      "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {

@@ -4,7 +4,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import { Spring, Transition, animated } from 'react-spring'
 import { GetCartItems } from '../lib/moltin'
-import { mapIndexed } from '../lib/helpers'
+import { mapIndexed, notNilOrEmpty } from '../lib/helpers'
 
 const defaultStyles = {
   cursor: 'pointer',
@@ -12,8 +12,6 @@ const defaultStyles = {
   width: '100%',
   color: 'white',
 }
-
-const CartQty = []
 
 const Menu = (props, styles) => (
   <animated.nav
@@ -41,7 +39,11 @@ const Menu = (props, styles) => (
         </li>
         <li>
           <Link to="#">
-            <i className="fa fa-shopping-cart" /> Cart ({props.parentProps.cart})
+            <i className="fa fa-shopping-cart" /> Cart ({notNilOrEmpty(
+              props.parentProps.cart
+            )
+              ? props.parentProps.cart
+              : 0})
           </Link>
         </li>
       </ul>

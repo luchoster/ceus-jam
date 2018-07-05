@@ -20,44 +20,27 @@ class ProductPageTemplate extends React.Component {
   }
   render() {
     return (
-      <section className="">
-        <div className="panel panel--white">
-          <div className="section">
-            <div className="columns">
-              <div className="column is-10 is-offset-1">
-                <div className="content">
-                  <div
-                    className="full-width-image-container margin-top-0"
-                    style={{ backgroundImage: `url(${this.props.image})` }}
-                  >
-                    <h2
-                      className="has-text-weight-bold is-size-1"
-                      style={{
-                        boxShadow: '0.5rem 0 0 #f40, -0.5rem 0 0 #f40',
-                        backgroundColor: '#f40',
-                        color: 'white',
-                        padding: '1rem',
-                      }}
-                    >
-                      Our Products
-                    </h2>
-                  </div>
-                  <div className="columns">
-                    <div className="column is-7">
-                      <h3 className="has-text-weight-semibold is-size-2" />
-                    </div>
-                  </div>
-                  <div
-                    className="full-width-image-container"
-                    style={{ backgroundImage: `url(${this.props.fullImage})` }}
-                  />
-                  <Pricing products={this.state.products} />
-                </div>
-              </div>
-            </div>
+      <React.Fragment>
+        <section
+          id="banner"
+          style={{ backgroundImage: `url(${this.props.image})` }}
+        >
+          <div className="inner">
+            <h2
+              className="has-text-weight-bold is-size-1"
+              style={{
+                boxShadow: '0.5rem 0 0 #f40, -0.5rem 0 0 #f40',
+                backgroundColor: '#f40',
+                color: 'white',
+                padding: '1rem',
+              }}
+            >
+              Our Products
+            </h2>
           </div>
-        </div>
-      </section>
+        </section>
+        <Pricing products={this.state.products} />
+      </React.Fragment>
     )
   }
 }
