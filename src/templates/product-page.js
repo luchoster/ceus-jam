@@ -7,20 +7,37 @@ import Testimonials from '../components/Testimonials'
 import Pricing from '../components/Pricing'
 import { notNilOrEmpty, mapIndexed } from '../lib/helpers'
 import { GetProducts, Products } from '../lib/moltin'
+import CartModal from '../components/Modal'
 
 class ProductPageTemplate extends React.Component {
-  state = {}
+  state = {
+    openCart: false,
+    itemAdded: '',
+  }
   componentDidMount() {
     this._getAllProducts()
   }
+
+  _closeCart = () => this.setState({ openCart: false })
+
   _getAllProducts = () => {
     return Bluebird.resolve(GetProducts()).then(products => {
       this.setState({ products: products })
     })
   }
+  _addedItem = () => name =>
+    notNilOrEmpty(name) && this.setState({ openCart: true, itemAdded: name })
+
   render() {
     return (
       <React.Fragment>
+        {notNilOrEmpty(this.state.itemAdded) && (
+          <CartModal
+            itemAdded={this.state.itemAdded}
+            open={this.state.openCart}
+            close={this._closeCart}
+          />
+        )}
         <section
           id="banner"
           style={{ backgroundImage: `url(${this.props.image})` }}
@@ -39,7 +56,7 @@ class ProductPageTemplate extends React.Component {
             </h2>
           </div>
         </section>
-        <Pricing products={this.state.products} />
+        <Pricing products={this.state.products} added={this._addedItem(name)} />
       </React.Fragment>
     )
   }

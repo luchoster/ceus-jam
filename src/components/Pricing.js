@@ -1,13 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { mapIndexed, notNilOrEmpty } from '../lib/helpers'
-import { AddCart } from '../lib/moltin'
+import { AddCart, DeleteCart } from '../lib/moltin'
+import CartModal from './Modal'
 
-const Pricing = ({ products }) => (
+const Pricing = props => (
   <section id="content-wrapper">
-    {notNilOrEmpty(products) &&
+    {notNilOrEmpty(props.products) &&
       mapIndexed((price, index) => (
-        <section className="panel panel--products">
+        <section className="panel panel--products" key={index}>
           <div className="inner">
             <div className="columns">
               <div className="column">
@@ -25,9 +26,7 @@ const Pricing = ({ products }) => (
                 <div className="column">
                   <button
                     onClick={() =>
-                      AddCart(price.id, 1).then(item => {
-                        alert(`Added ${price.name} to your cart`)
-                      })
+                      AddCart(price.id, 1).then(items => props.added(price))
                     }
                   >
                     Add to Cart
@@ -37,7 +36,7 @@ const Pricing = ({ products }) => (
             </div>
           </div>
         </section>
-      ))(products.data)}
+      ))(props.products.data)}
   </section>
 )
 

@@ -24,10 +24,6 @@ class TemplateWrapper extends React.Component {
     R.empty(this.state.cart) && this._getCart()
   }
 
-  componentDidUpdate(prevProps) {
-    console.log(prevProps)
-  }
-
   _onToggleNav = e => {
     this.setState(state => ({ showNav: !state.showNav }))
   }

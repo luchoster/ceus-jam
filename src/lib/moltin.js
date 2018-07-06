@@ -50,3 +50,5 @@ export const GetOrder = ID => Moltin.Orders.Get(ID)
 export const OrderPay = (ID, data) => Moltin.Orders.Payment(ID, data)
 
 export const DeleteCart = () => Moltin.Cart().Delete()
+
+export const RemoveItem = (itemId, qty) => Moltin.Cart().RemoveItem(itemId, qty)
