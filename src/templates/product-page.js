@@ -56,7 +56,7 @@ class ProductPageTemplate extends React.Component {
             </h2>
           </div>
         </section>
-        <Pricing products={this.state.products} added={this._addedItem(name)} />
+        <Pricing products={this.state.products} added={this._addedItem()} />
       </React.Fragment>
     )
   }
