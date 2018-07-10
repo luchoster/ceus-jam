@@ -20,7 +20,7 @@ const CartModal = props => (
       <div className="columns">
         <div className="column">
           <DialogContentText id="alert-dialog-description">
-            ${props.itemAdded.name}
+            {props.itemAdded.name}
           </DialogContentText>
         </div>
         <div className="column is-2">

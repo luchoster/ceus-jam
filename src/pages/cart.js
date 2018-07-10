@@ -1,23 +1,21 @@
 import Bluebird from 'bluebird'
-import R from 'ramda'
+import * as R from 'ramda'
 import React from 'react'
+import Link from 'gatsby-link'
+import { connect } from 'react-redux'
 import { Button } from '@material-ui/core'
 import { GetCartItems } from '../lib/moltin'
-import { notNilOrEmpty } from '../lib/helpers'
+import { mapIndexed, notNilOrEmpty } from '../lib/helpers'
 import CartTemplate from '../templates/cart-page.js'
+import { Cart } from '../state/actions'
 
 class CartPageTemplate extends React.Component {
   state = {}
   componentDidMount() {
-    R.empty(this.state.cart) && this._getCart()
+    R.empty(this.state.cart) && this.props.getCart()
   }
   componentDidUpdate(prevProps, prevState) {
-    prevState.cart != this.state.newCart && this._getCart()
-  }
-  _getCart = () => {
-    Bluebird.resolve(GetCartItems()).then(cartItems => {
-      this.setState({ cart: cartItems.data })
-    })
+    !R.equals(prevState, this.state) && this.props.getCart()
   }
   _refreshCart = cart =>
     this.setState({
@@ -30,23 +28,42 @@ class CartPageTemplate extends React.Component {
           <div className="inner">
             <h2>
               <small>
-                ( {this.state.cart && this.state.cart.length} )
+                ({' '}
+                {this.props.cart &&
+                  R.compose(
+                    res => R.sum(res),
+                    mapIndexed((item, index) => item.quantity)
+                  )(this.props.cart.cart_content)})
                 <span> items in cart</span>
               </small>
             </h2>
-            <Button variant="raised" color="default">
-              <i className="fa fa-shopping-cart" />
-              Checkout
-            </Button>
+            <div className="columns is-centered">
+              <div className="column is-4">
+                <Link className="btn" to="/checkout">
+                  <i className="fa fa-shopping-cart" /> Checkout
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
         <CartTemplate
-          cart={notNilOrEmpty(this.state.cart) && this.state.cart}
-          refreshCart={() => this._refreshCart()}
+          cart={notNilOrEmpty(this.props.cart) && this.props.cart.cart_content}
+          refreshCart={cart => this._refreshCart(cart)}
         />
       </React.Fragment>
     )
   }
 }
 
-export default CartPageTemplate
+const mapStateToProps = state => ({
+  cart: state.cart,
+})
+
+const mapDispatchToProps = dispatch => ({
+  getCart: () => dispatch(Cart._getCart()),
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CartPageTemplate)

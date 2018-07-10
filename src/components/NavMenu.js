@@ -43,11 +43,11 @@ const Menu = (props, styles) => (
           </Link>
         </li>
         <li>
-          <Link to="/cart">
+          <Link onClick={props.parentProps.toggleNav} to="/cart">
             <i className="fa fa-shopping-cart" /> Cart ({notNilOrEmpty(
-              props.parentProps.cart
+              props.parentProps.cartCount
             )
-              ? props.parentProps.cart
+              ? props.parentProps.cartCount
               : 0})
           </Link>
         </li>
