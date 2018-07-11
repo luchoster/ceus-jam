@@ -1,0 +1,6 @@
+.checkout-form {
+  @include modifier('row') {
+    margin: 15px auto;
+    padding-top: 10px;
+  }
+}

@@ -52,3 +52,15 @@ export const OrderPay = (ID, data) => Moltin.Orders.Payment(ID, data)
 export const DeleteCart = () => Moltin.Cart().Delete()
 
 export const RemoveItem = (itemId, qty) => Moltin.Cart().RemoveItem(itemId, qty)
+
+export const Payment = (orderId, customer) =>
+  Moltin.Orders.Payment(orderId, {
+    gateway: 'braintree',
+    method: 'purchase',
+    first_name: customer.name,
+    last_name: customer.last_name,
+    number: customer.cardNumber,
+    month: '10',
+    year: '2021',
+    verification_value: customer.cvc,
+  })
