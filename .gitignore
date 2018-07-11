@@ -3,6 +3,8 @@
 node_modules
 .yarn.lock
 .cache/
+localStorage/
+
 # Build directory
 public/
 static/admin/*.bundle.*
