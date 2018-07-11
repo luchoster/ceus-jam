@@ -1,106 +1,54 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { FormControl, Input, InputLabel, TextField } from '@material-ui/core'
-import MaskedInput from 'react-text-mask'
+import Cleave from 'cleave.js/react'
+import {
+  FormControl,
+  Input,
+  InputLabel,
+  TextField,
+  withStyles,
+} from '@material-ui/core'
 
 import { Cart } from '../state/actions'
 
-const createOptions = () => {
-  return {
-    style: {
-      base: {
-        color: '#424770',
-        letterSpacing: '0.025em',
-        fontFamily: 'Source Code Pro, monospace',
-        '::placeholder': {
-          color: '#aab7c4',
-        },
-      },
-      invalid: {
-        color: '#9e2146',
-      },
-    },
-  }
-}
+const styles = theme => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+})
 
 const CreditCardMask = props => {
   const { onChange, ...other } = props
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-      }}
-    >
-      <InputLabel
-        style={{
-          display: 'block',
-        }}
-      >
-        Card Number
-      </InputLabel>
-      <MaskedInput
-        mask={[
-          /\d/,
-          /\d/,
-          /\d/,
-          /\d/,
-          ' ',
-          /\d/,
-          /\d/,
-          /\d/,
-          /\d/,
-          ' ',
-          /\d/,
-          /\d/,
-          /\d/,
-          /\d/,
-          ' ',
-          /\d/,
-          /\d/,
-          /\d/,
-          /\d/,
-        ]}
-        placeholder="4242 4242 4242 4242"
-        className="MuiInput-input-13"
-        onChange={onChange}
-        guide={false}
-      />
-    </div>
+    <Cleave
+      placeholder="Enter your credit card number"
+      options={{ creditCard: true }}
+      onChange={onChange}
+    />
   )
 }
 
 const ExpirationMask = props => {
   const { onChange, ...other } = props
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-      }}
-    >
-      <InputLabel
-        style={{
-          display: 'block',
-        }}
-      >
-        Expiration Date
-      </InputLabel>
-      <MaskedInput
-        guide={false}
-        mask={[/\d/, /\d/, '/', /\d/, /\d/]}
-        placeholder="MM/YY"
-        className="MuiInput-input-13"
-        onChange={onChange}
-      />
-    </div>
+    <Cleave
+      placeholder="MM/YY"
+      options={{ date: true, datePattern: ['m', 'y'] }}
+      onChange={onChange}
+    />
   )
 }
 
 class CheckoutPage extends React.Component {
   state = {
-    ccMask: '',
-    expDate: '',
+    cardNumber: '',
+    name: '',
+    expiry: '',
+    cvc: '',
+    issuer: '',
+    focused: '',
+    formData: null,
   }
   componentDidMount() {
     this.props.getCart()
@@ -127,6 +75,7 @@ class CheckoutPage extends React.Component {
   }
   render() {
     console.log(this.state)
+    const { cardNumber, expiry, cvc } = this.state
     return (
       <React.Fragment>
         <section id="banner">
@@ -142,55 +91,66 @@ class CheckoutPage extends React.Component {
           <div className="columns">
             <div className="panel panel--off-white column is-12">
               <div className="inner checkout-form">
-                <label className="columns checkout-form--row">
-                  <FormControl className="">
-                    <Input
-                      value={this.state.ccMask}
-                      onChange={this.handleChange('ccMask')}
-                      id="formatted-text-mask-input"
-                      inputComponent={CreditCardMask}
-                      startAdornment={
-                        <i
-                          className="fa fa-credit-card"
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            paddingRight: 10,
-                          }}
-                        />
-                      }
-                    />
-                  </FormControl>
-                </label>
-                <label className="columns checkout-form--row">
-                  <FormControl className="">
-                    <Input
-                      id="formatted-exp-date"
-                      inputComponent={ExpirationMask}
-                      onChange={this.handleChange('expDate')}
-                    />
-                  </FormControl>
-                </label>
-                <label>
-                  <TextField
-                    id="with-placeholder"
-                    label="CVC"
-                    placeholder="123"
-                    margin="normal"
-                    inputProps={{
-                      maxLength: 3,
-                    }}
-                  />
-                </label>
-                <label>
-                  <TextField
-                    id="with-placeholder"
-                    label="Zipcode"
-                    placeholder="Placeholder"
-                    margin="normal"
-                  />
-                </label>
-                <button>Pay</button>
+                <div className="columns is-centered">
+                  <div className="column is-6">
+                    <form>
+                      <div className="columns">
+                        <div className="column">
+                          <InputLabel
+                            style={{
+                              display: 'block',
+                            }}
+                          >
+                            Credit Card Number
+                          </InputLabel>
+                          <TextField
+                            placeholder="Enter your credit card number"
+                            InputProps={{
+                              inputComponent: CreditCardMask,
+                            }}
+                            onChange={this.handleChange('cardNumber')}
+                            fullWidth
+                          />
+                        </div>
+                      </div>
+                      <div className="columns">
+                        <div className="column">
+                          <InputLabel
+                            style={{
+                              display: 'block',
+                            }}
+                          >
+                            Expiration Date
+                          </InputLabel>
+                          <TextField
+                            placeholder="MM/YY"
+                            InputProps={{
+                              inputComponent: ExpirationMask,
+                            }}
+                            onChange={this.handleChange('cvc')}
+                          />
+                        </div>
+                        <div className="column">
+                          <InputLabel
+                            style={{
+                              display: 'block',
+                            }}
+                          >
+                            CVC
+                          </InputLabel>
+                          <TextField
+                            placeholder="123"
+                            inputProps={{
+                              maxLength: 3,
+                            }}
+                            onChange={this.handleChange('cvc')}
+                          />
+                        </div>
+                      </div>
+                      <button>Pay</button>
+                    </form>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -211,4 +171,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CheckoutPage)
+)(withStyles(styles)(CheckoutPage))
