@@ -1,3 +1,4 @@
 import Cart from './cart'
+import Checkout from './checkout'
 
-export { Cart }
+export { Cart, Checkout }

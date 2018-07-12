@@ -1,3 +1,4 @@
+import * as R from 'ramda'
 import React from 'react'
 import { connect } from 'react-redux'
 import Cleave from 'cleave.js/react'
@@ -9,6 +10,7 @@ import {
   withStyles,
 } from '@material-ui/core'
 
+import { mapIndexed, notNilOrEmpty } from '../lib/helpers'
 import { Cart } from '../state/actions'
 
 const styles = theme => ({
@@ -44,29 +46,19 @@ class CheckoutPage extends React.Component {
   state = {
     cardNumber: '',
     name: '',
+    email: '',
     expiry: '',
     cvc: '',
     issuer: '',
     focused: '',
     formData: null,
+    gateway: 'braintree',
+    method: 'purchase',
+    month: '08',
+    year: '2020',
   }
   componentDidMount() {
     this.props.getCart()
-  }
-  handleBlur = () => {
-    console.log('[blur]')
-  }
-  handleChange = change => {
-    console.log('[change]', change)
-  }
-  handleClick = () => {
-    console.log('[click]')
-  }
-  handleFocus = () => {
-    console.log('[focus]')
-  }
-  handleReady = () => {
-    console.log('[ready]')
   }
   handleChange = name => event => {
     this.setState({
@@ -82,7 +74,16 @@ class CheckoutPage extends React.Component {
           <div className="inner">
             <h2>
               <small>
-                <span> Checkout </span>
+                <span>
+                  {' '}
+                  Checkout ({' $'}
+                  {notNilOrEmpty(this.props.cart.cart_content) &&
+                    R.compose(
+                      res => R.sum(res),
+                      mapIndexed((item, index) => item.value.amount)
+                    )(this.props.cart.cart_content)}{' '}
+                  )
+                </span>
               </small>
             </h2>
           </div>
@@ -96,13 +97,26 @@ class CheckoutPage extends React.Component {
                     <form>
                       <div className="columns">
                         <div className="column">
-                          <InputLabel
-                            style={{
-                              display: 'block',
-                            }}
-                          >
-                            Credit Card Number
-                          </InputLabel>
+                          <TextField
+                            placeholder="Name"
+                            inputProps={{}}
+                            onChange={this.handleChange('name')}
+                            fullWidth
+                            required
+                          />
+                        </div>
+                        <div className="column">
+                          <TextField
+                            placeholder="Email"
+                            onChange={this.handleChange('email')}
+                            fullWidth
+                            required
+                            type="email"
+                          />
+                        </div>
+                      </div>
+                      <div className="columns">
+                        <div className="column">
                           <TextField
                             placeholder="Enter your credit card number"
                             InputProps={{
@@ -110,40 +124,31 @@ class CheckoutPage extends React.Component {
                             }}
                             onChange={this.handleChange('cardNumber')}
                             fullWidth
+                            required
                           />
                         </div>
                       </div>
                       <div className="columns">
                         <div className="column">
-                          <InputLabel
-                            style={{
-                              display: 'block',
-                            }}
-                          >
-                            Expiration Date
-                          </InputLabel>
                           <TextField
                             placeholder="MM/YY"
                             InputProps={{
                               inputComponent: ExpirationMask,
                             }}
-                            onChange={this.handleChange('cvc')}
+                            onChange={this.handleChange('expiry')}
+                            fullWidth
+                            required
                           />
                         </div>
                         <div className="column">
-                          <InputLabel
-                            style={{
-                              display: 'block',
-                            }}
-                          >
-                            CVC
-                          </InputLabel>
                           <TextField
                             placeholder="123"
                             inputProps={{
                               maxLength: 3,
                             }}
                             onChange={this.handleChange('cvc')}
+                            fullWidth
+                            required
                           />
                         </div>
                       </div>
