@@ -11,7 +11,7 @@ import {
 } from '@material-ui/core'
 
 import { mapIndexed, notNilOrEmpty } from '../lib/helpers'
-import { Cart } from '../state/actions'
+import { Cart, Checkout } from '../state/actions'
 
 const styles = theme => ({
   container: {
@@ -42,6 +42,33 @@ const ExpirationMask = props => {
   )
 }
 
+var CheckoutTemplate = {
+  customer: {
+    name: '',
+    email: '',
+  },
+  shipping_address: {
+    first_name: '',
+    last_name: '',
+    line_1: '',
+    line_2: '',
+    city: '',
+    postcode: '',
+    county: '',
+    country: '',
+  },
+  billing_address: {
+    first_name: '',
+    last_name: '',
+    line_1: '',
+    line_2: '',
+    city: '',
+    postcode: '',
+    county: '',
+    country: '',
+  },
+}
+
 class CheckoutPage extends React.Component {
   state = {
     cardNumber: '',
@@ -56,6 +83,11 @@ class CheckoutPage extends React.Component {
     method: 'purchase',
     month: '08',
     year: '2020',
+    line_1: '',
+    postcode: '',
+    city: '',
+    county: '',
+    country: '',
   }
   componentDidMount() {
     this.props.getCart()
@@ -65,9 +97,45 @@ class CheckoutPage extends React.Component {
       [name]: event.target.value,
     })
   }
+
+  _submitPaymentInfo = () => {
+    CheckoutTemplate.customer.name = this.state.name
+    CheckoutTemplate.customer.email = this.state.email
+
+    CheckoutTemplate.billing_address.first_name = this.state.name
+    CheckoutTemplate.billing_address.line_1 = this.state.address_1
+    CheckoutTemplate.billing_address.city = this.state.state
+    CheckoutTemplate.billing_address.county = this.state.postcode
+    CheckoutTemplate.billing_address.country = this.state.country
+
+    CheckoutTemplate.shipping_address.first_name = this.state.name
+    CheckoutTemplate.shipping_address.line_1 = this.state.line_1
+    CheckoutTemplate.shipping_address.city = this.state.city
+    CheckoutTemplate.shipping_address.county = this.state.postcode
+    CheckoutTemplate.shipping_address.country = this.state.country
+    this.props.checkout(CheckoutTemplate, {
+      gateway: 'braintree',
+      method: 'purchase',
+      name: this.state.name,
+      number: this.state.cardNumber,
+      month: '08',
+      year: '2020',
+      verification_value: this.state.cvc,
+    })
+  }
+
   render() {
-    console.log(this.state)
-    const { cardNumber, expiry, cvc } = this.state
+    const {
+      line_1,
+      country,
+      county,
+      postcode,
+      name,
+      email,
+      cardNumber,
+      expiry,
+      cvc,
+    } = this.state
     return (
       <React.Fragment>
         <section id="banner">
@@ -94,66 +162,110 @@ class CheckoutPage extends React.Component {
               <div className="inner checkout-form">
                 <div className="columns is-centered">
                   <div className="column is-6">
-                    <form>
-                      <div className="columns">
-                        <div className="column">
-                          <TextField
-                            placeholder="Name"
-                            inputProps={{}}
-                            onChange={this.handleChange('name')}
-                            fullWidth
-                            required
-                          />
-                        </div>
-                        <div className="column">
-                          <TextField
-                            placeholder="Email"
-                            onChange={this.handleChange('email')}
-                            fullWidth
-                            required
-                            type="email"
-                          />
-                        </div>
+                    <div className="columns">
+                      <div className="column">
+                        <TextField
+                          placeholder="Name"
+                          inputProps={{}}
+                          onChange={this.handleChange('name')}
+                          fullWidth
+                          required
+                        />
                       </div>
-                      <div className="columns">
-                        <div className="column">
-                          <TextField
-                            placeholder="Enter your credit card number"
-                            InputProps={{
-                              inputComponent: CreditCardMask,
-                            }}
-                            onChange={this.handleChange('cardNumber')}
-                            fullWidth
-                            required
-                          />
-                        </div>
+                      <div className="column">
+                        <TextField
+                          placeholder="Email"
+                          onChange={this.handleChange('email')}
+                          fullWidth
+                          required
+                          type="email"
+                        />
                       </div>
-                      <div className="columns">
-                        <div className="column">
-                          <TextField
-                            placeholder="MM/YY"
-                            InputProps={{
-                              inputComponent: ExpirationMask,
-                            }}
-                            onChange={this.handleChange('expiry')}
-                            fullWidth
-                            required
-                          />
-                        </div>
-                        <div className="column">
-                          <TextField
-                            placeholder="123"
-                            inputProps={{
-                              maxLength: 3,
-                            }}
-                            onChange={this.handleChange('cvc')}
-                            fullWidth
-                            required
-                          />
-                        </div>
+                    </div>
+                    <div className="columns">
+                      <div className="column">
+                        <TextField
+                          placeholder="Address"
+                          onChange={this.handleChange('line_1')}
+                          fullWidth
+                          required
+                        />
                       </div>
-                      <button>Pay</button>
-                    </form>
+                      <div className="column">
+                        <TextField
+                          placeholder="City"
+                          onChange={this.handleChange('city')}
+                          fullWidth
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="columns">
+                      <div className="column">
+                        <TextField
+                          placeholder="State"
+                          onChange={this.handleChange('county')}
+                          fullWidth
+                          required
+                        />
+                      </div>
+                      <div className="column">
+                        <TextField
+                          placeholder="Zipcode"
+                          onChange={this.handleChange('postcode')}
+                          fullWidth
+                          required
+                        />
+                      </div>
+                      <div className="column">
+                        <TextField
+                          placeholder="Country"
+                          onChange={this.handleChange('country')}
+                          fullWidth
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="columns">
+                      <div className="column">
+                        <TextField
+                          placeholder="Enter your credit card number"
+                          InputProps={{
+                            inputComponent: CreditCardMask,
+                          }}
+                          onChange={this.handleChange('cardNumber')}
+                          fullWidth
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="columns">
+                      <div className="column">
+                        <TextField
+                          placeholder="MM/YY"
+                          InputProps={{
+                            inputComponent: ExpirationMask,
+                          }}
+                          onChange={this.handleChange('expiry')}
+                          fullWidth
+                          required
+                        />
+                      </div>
+                      <div className="column">
+                        <TextField
+                          placeholder="123"
+                          inputProps={{
+                            maxLength: 3,
+                          }}
+                          onChange={this.handleChange('cvc')}
+                          fullWidth
+                          required
+                        />
+                      </div>
+                    </div>
+                    <button onClick={() => this._submitPaymentInfo()}>
+                      Pay
+                    </button>
                   </div>
                 </div>
               </div>
@@ -167,13 +279,15 @@ class CheckoutPage extends React.Component {
 
 const mapStateToProps = state => ({
   cart: state.cart,
+  log: console.log(state),
 })
 
 const mapDispatchToProps = dispatch => ({
   getCart: () => dispatch(Cart._getCart()),
+  checkout: (obj, payment) => dispatch(Checkout._checkout(obj, payment)),
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withStyles(styles)(CheckoutPage))
+)(CheckoutPage)

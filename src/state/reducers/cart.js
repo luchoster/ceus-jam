@@ -1,7 +1,11 @@
 import * as R from 'ramda'
 import { Cart } from '../actions'
 
-const reducer = (state = {}, action) =>
+const DEFAULT_STATE = {
+  cart_content: [],
+}
+
+const reducer = (state = DEFAULT_STATE, action) =>
   R.cond([
     [
       R.equals(Cart.TYPE.receive_cart),
