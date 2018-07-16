@@ -43,10 +43,6 @@ const ExpirationMask = props => {
 }
 
 var CheckoutTemplate = {
-  customer: {
-    name: '',
-    email: '',
-  },
   shipping_address: {
     first_name: '',
     last_name: '',
@@ -99,29 +95,40 @@ class CheckoutPage extends React.Component {
   }
 
   _submitPaymentInfo = () => {
-    CheckoutTemplate.customer.name = this.state.name
-    CheckoutTemplate.customer.email = this.state.email
-
     CheckoutTemplate.billing_address.first_name = this.state.name
-    CheckoutTemplate.billing_address.line_1 = this.state.address_1
-    CheckoutTemplate.billing_address.city = this.state.state
-    CheckoutTemplate.billing_address.county = this.state.postcode
+    CheckoutTemplate.billing_address.line_1 = this.state.line_1
+    CheckoutTemplate.billing_address.city = this.state.city
+    CheckoutTemplate.billing_address.county = this.state.county
     CheckoutTemplate.billing_address.country = this.state.country
+    CheckoutTemplate.billing_address.postcode = this.state.postcode
 
     CheckoutTemplate.shipping_address.first_name = this.state.name
     CheckoutTemplate.shipping_address.line_1 = this.state.line_1
     CheckoutTemplate.shipping_address.city = this.state.city
-    CheckoutTemplate.shipping_address.county = this.state.postcode
+    CheckoutTemplate.shipping_address.postcode = this.state.postcode
+    CheckoutTemplate.shipping_address.county = this.state.county
     CheckoutTemplate.shipping_address.country = this.state.country
-    this.props.checkout(CheckoutTemplate, {
-      gateway: 'braintree',
-      method: 'purchase',
-      name: this.state.name,
-      number: this.state.cardNumber,
-      month: '08',
-      year: '2020',
-      verification_value: this.state.cvc,
-    })
+
+    console.log(CheckoutTemplate)
+
+    this.props.checkout(
+      {
+        email: this.state.email,
+        name: this.state.name,
+      },
+      {
+        CheckoutTemplate,
+      }
+    )
+    // this.props.checkout(CheckoutTemplate, {
+    //   gateway: 'braintree',
+    //   method: 'purchase',
+    //   name: this.state.name,
+    //   number: this.state.cardNumber,
+    //   month: '08',
+    //   year: '2020',
+    //   verification_value: this.state.cvc,
+    // })
   }
 
   render() {

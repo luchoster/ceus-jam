@@ -8,15 +8,17 @@ const TYPE = {
   payment_complete: 'PAYMENT_COMPLETE',
 }
 
-const _checkout = (obj, payment) => dispatch =>
+const _checkout = (obj, payment) => dispatch => {
+  console.log('checking out order -> ', obj)
   Checkout(obj)
     .then(order => {
       console.log('checking out order -> ', order)
-      OrderPay(order.data.id, { payment })
-      DeleteCart()
+      // OrderPay(order.data.id, { payment })
+      // DeleteCart()
     })
-    .then(() => dispatch({ type: TYPE.payment_complete }))
-    .catch(e => console.log(e))
+    //   .then(() => dispatch({ type: TYPE.payment_complete }))
+    .catch(e => console.log('error => ', e))
+}
 
 export default {
   TYPE,
