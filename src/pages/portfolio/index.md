@@ -7,6 +7,9 @@ client:
   - image: /img/df2md.png
     link: 'https://dogfood2mydoor.com/'
     name: Dog Food 2 My Door
+  - image: /img/cutter.png
+    link: 'http://www.cutterlegal.com/'
+    name: Cutter Law Firm
   - image: /img/apriva.png
     link: 'https://www.apriva.com/'
     name: Apriva Pay
