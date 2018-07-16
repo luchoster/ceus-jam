@@ -1,6 +1,8 @@
 ---
 templateKey: portfolio-page
 client:
+  - image: /img/pixhawk.png
+    name: Pixhawk
   - image: /img/srrobots.png
     link: 'https://srrobots.com/'
     name: Señor Robots
