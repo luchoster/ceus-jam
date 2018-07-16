@@ -2,6 +2,7 @@
 templateKey: portfolio-page
 client:
   - image: /img/pixhawk.png
+    link: 'http://pixhawk.org/'
     name: Pixhawk
   - image: /img/srrobots.png
     link: 'https://srrobots.com/'
