@@ -25,6 +25,9 @@ client:
   - image: /img/cut-above.png
     link: 'https://cutaboveagency.com'
     name: Cut Above Agency
+  - image: /img/ccee.png
+    link: 'http://faceconomicas.usac.edu.gt/'
+    name: USAC CCEE
   - image: /img/fortis.png
     link: 'http://fortis.vegas/'
     name: Fortis Advisors
