@@ -109,15 +109,23 @@ class CheckoutPage extends React.Component {
     CheckoutTemplate.shipping_address.county = this.state.county
     CheckoutTemplate.shipping_address.country = this.state.country
 
-    console.log(CheckoutTemplate)
-
     this.props.checkout(
       {
         email: this.state.email,
         name: this.state.name,
       },
       {
-        CheckoutTemplate,
+        billing_address: CheckoutTemplate.billing_address,
+        shipping_address: CheckoutTemplate.shipping_address,
+      },
+      {
+        gateway: 'braintree',
+        method: 'purchase',
+        name: this.state.name,
+        number: this.state.cardNumber,
+        month: '08',
+        year: '2020',
+        verification_value: this.state.cvc,
       }
     )
     // this.props.checkout(CheckoutTemplate, {
@@ -270,9 +278,7 @@ class CheckoutPage extends React.Component {
                         />
                       </div>
                     </div>
-                    <button onClick={() => this._submitPaymentInfo()}>
-                      Pay
-                    </button>
+                    <button onClick={this._submitPaymentInfo}>Pay</button>
                   </div>
                 </div>
               </div>
@@ -286,12 +292,12 @@ class CheckoutPage extends React.Component {
 
 const mapStateToProps = state => ({
   cart: state.cart,
-  log: console.log(state),
 })
 
 const mapDispatchToProps = dispatch => ({
   getCart: () => dispatch(Cart._getCart()),
-  checkout: (obj, payment) => dispatch(Checkout._checkout(obj, payment)),
+  checkout: (customer, address, payment) =>
+    dispatch(Checkout._checkout(customer, address, payment)),
 })
 
 export default connect(
