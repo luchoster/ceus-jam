@@ -122,29 +122,9 @@ class CheckoutPage extends React.Component {
         verification_value: this.state.cvc,
       }
     )
-    // this.props.checkout(CheckoutTemplate, {
-    //   gateway: 'braintree',
-    //   method: 'purchase',
-    //   name: this.state.name,
-    //   number: this.state.cardNumber,
-    //   month: '08',
-    //   year: '2020',
-    //   verification_value: this.state.cvc,
-    // })
   }
 
   render() {
-    // const {
-    //   line_1,
-    //   country,
-    //   county,
-    //   postcode,
-    //   name,
-    //   email,
-    //   cardNumber,
-    //   expiry,
-    //   cvc,
-    // } = this.state
     return (
       <React.Fragment>
         <section id="banner">
