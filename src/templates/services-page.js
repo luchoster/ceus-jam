@@ -1,5 +1,6 @@
 import React from 'react'
-import { mapIndexed, createMarkup, notNilOrEmpty } from '../lib/helpers'
+import { graphql } from 'gatsby'
+import { mapIndexed } from '../lib/helpers'
 import SqBg from '../assets/imgs/sq-pattern.png'
 
 export const ServicesPageTemplate = ({ service }) => {
@@ -26,15 +27,10 @@ export const ServicesPageTemplate = ({ service }) => {
             key={index}
           >
             <div className="inner">
-              <a href="#" className="image">
-                <img src={item.image} alt="" />
-              </a>
+              <img src={item.image} alt="" />
               <div className="content">
                 <h2 className="major">{item.title}</h2>
                 <p>{item.text}</p>
-                <a href="#" className="special">
-                  Learn more
-                </a>
               </div>
             </div>
           </section>

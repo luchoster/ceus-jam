@@ -1,16 +1,9 @@
-import * as R from 'ramda'
+import { graphql } from 'gatsby'
 import React from 'react'
 import Link from 'gatsby-link'
-import Marked from 'marked'
 import Slider from 'react-slick'
-import LogoVertical from '../assets/imgs/logo.png'
 import SqBg from '../assets/imgs/sq-pattern.png'
-import {
-  createMarkup,
-  notNilOrEmpty,
-  mapIndexed,
-  rawMarkup,
-} from '../lib/helpers'
+import { mapIndexed } from '../lib/helpers'
 
 export default class Home extends React.Component {
   render() {
@@ -31,7 +24,7 @@ export default class Home extends React.Component {
 
     return (
       <React.Fragment>
-        <Slider>
+        <Slider {...settings}>
           {mapIndexed((item, index) => (
             <section
               id="banner"

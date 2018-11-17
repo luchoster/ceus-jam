@@ -14,7 +14,7 @@ const Navbar = props => (
         </a>
       </h1>
       <nav>
-        <a className="header--menu-link" onTouchTap={props.toggleNav}>
+        <a className="header--menu-link" onClick={props.toggleNav}>
           Menu
         </a>
       </nav>

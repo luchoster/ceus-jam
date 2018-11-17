@@ -170,6 +170,33 @@
       }
     }
   }
+  @include modifier('products') {
+    .title {
+      color: _palette(main);
+    }
+    &:first-child {
+      &::after {
+        background-color: _palette(off-white);
+        left: -1px !important;
+      }
+    }
+    &:nth-child(odd) {
+      @include wrapper-edges-color(_palette(off-white));
+      background-color: _palette(off-white);
+      border: 1px solid _palette(off-white);
+      color: _palette(main);
+    }
+    &:nth-child(even) {
+      @include wrapper-edges-color(_palette(fg));
+      background-color: _palette(fg);
+      border: 1px solid _palette(fg);
+      color: _palette(main);
+      &::after {
+        background-color: _palette(fg);
+        left: -1px !important;
+      }
+    }
+  }
 
   .section {
     @include modifier('about') {

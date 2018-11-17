@@ -18,7 +18,7 @@
     medium: '(max-width: 980px)',
     small: '(max-width: 736px)',
     xsmall: '(max-width: 640px)',
-    xxsmall: '(max-width: 360px)'
+    xxsmall: '(max-width: 360px)',
   )
 );
 
@@ -26,10 +26,26 @@
   (
     reset: 'full',
     boxModel: 'border',
-    grid: (gutters: 1.75em),
-    breakpoints: (small: (grid: (gutters: 1.25em)))
+    grid: (
+      gutters: 1.75em,
+    ),
+    breakpoints: (
+      small: (
+        grid: (
+          gutters: 1.25em,
+        ),
+      ),
+    ),
   )
 );
+
+input {
+  min-height: auto !important;
+  &:active,
+  &:focus {
+    background: none !important;
+  }
+}
 
 // Base.
 
@@ -47,6 +63,8 @@
 @import 'components/table';
 @import 'components/button';
 @import 'components/features';
+@import 'components/cart';
+@import 'components/checkout';
 
 // Layout.
 
