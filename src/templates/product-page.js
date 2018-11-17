@@ -1,12 +1,8 @@
 import Bluebird from 'bluebird'
-import * as R from 'ramda'
 import React from 'react'
-import PropTypes from 'prop-types'
-import Features from '../components/Features'
-import Testimonials from '../components/Testimonials'
 import Pricing from '../components/Pricing'
-import { notNilOrEmpty, mapIndexed } from '../lib/helpers'
-import { GetProducts, Products } from '../lib/moltin'
+import { notNilOrEmpty } from '../lib/helpers'
+import { GetProducts } from '../lib/moltin'
 import CartModal from '../components/Modal'
 
 class ProductPageTemplate extends React.Component {

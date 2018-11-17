@@ -1,10 +1,7 @@
-import Bluebird from 'bluebird'
 import * as R from 'ramda'
 import React from 'react'
 import Link from 'gatsby-link'
 import { connect } from 'react-redux'
-import { Button } from '@material-ui/core'
-import { GetCartItems } from '../lib/moltin'
 import { mapIndexed, notNilOrEmpty } from '../lib/helpers'
 import CartTemplate from '../templates/cart-page.js'
 import { Cart } from '../state/actions'
@@ -33,8 +30,8 @@ class CartPageTemplate extends React.Component {
                   R.compose(
                     res => R.sum(res),
                     mapIndexed((item, index) => item.quantity)
-                  )(this.props.cart.cart_content)})
-                <span> items in cart</span>
+                  )(this.props.cart.cart_content)}
+                )<span> items in cart</span>
               </small>
             </h2>
             <div className="columns is-centered">

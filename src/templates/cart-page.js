@@ -1,14 +1,9 @@
 import * as R from 'ramda'
 import React from 'react'
 import Link from 'gatsby-link'
-import { Button, Paper, Typography } from '@material-ui/core'
+import { Paper } from '@material-ui/core'
 import { mapIndexed, notNilOrEmpty } from '../lib/helpers'
-import {
-  DeleteCart,
-  RemoveItem,
-  UpdateCartPlus,
-  UpdateCartMinus,
-} from '../lib/moltin'
+import { RemoveItem, UpdateCartPlus, UpdateCartMinus } from '../lib/moltin'
 
 const CartTemplate = props => (
   <div id="content-wrapper">
@@ -112,14 +107,18 @@ const CartTemplate = props => (
                                 <span className="item-price hidden">
                                   <span className="hide-content">
                                     Price per item{' '}
-                                  </span>$<span className="product-price">
+                                  </span>
+                                  $
+                                  <span className="product-price">
                                     {item.unit_price.amount}
                                   </span>
                                   <span aria-hidden="true"> / </span>
                                 </span>
                                 <span className="hide-content">
                                   Product subtotal{' '}
-                                </span>$<span className="total-product-price">
+                                </span>
+                                $
+                                <span className="total-product-price">
                                   {item.unit_price.amount}
                                 </span>
                               </p>
@@ -141,12 +140,11 @@ const CartTemplate = props => (
                       </Paper>
                     ))(props.cart)}
                     <div className="total-price">
-                      Subtotal<span className="hide-content">
-                        {' '}
-                        of all products
-                      </span>{' '}
+                      Subtotal
+                      <span className="hide-content"> of all products</span>{' '}
                       <span className="price">
-                        ${notNilOrEmpty(props.cart) &&
+                        $
+                        {notNilOrEmpty(props.cart) &&
                           R.compose(
                             res => R.sum(res),
                             mapIndexed((item, index) => item.value.amount)

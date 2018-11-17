@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { graphql } from 'gatsby'
 
 export const HomePageTemplate = ({ title }) => {
   return <section className="section section--gradient">Home Page</section>

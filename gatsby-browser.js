@@ -8,7 +8,7 @@ import Reducers from './src/state/reducers/'
 
 const store = createStore(Reducers, applyMiddleware(Thunk))
 
-export const replaceRouterComponent = ({ history }) => {
+export const replaceComponentRenderer = ({ history }) => {
   const ConnectedRouterWrapper = ({ children }) => (
     <Provider store={store}>
       <Router history={history}>{children}</Router>

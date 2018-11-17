@@ -1,6 +1,5 @@
-import * as R from 'ramda'
-import Bluebird from 'bluebird'
 import { OrderPay, Checkout, DeleteCart } from '../../lib/moltin'
+import { navigate } from 'gatsby'
 
 const TYPE = {
   checkout: 'CHECKOUT',
@@ -17,7 +16,7 @@ const _checkout = (customer, address, payment) => dispatch => {
     .then(() => {
       dispatch(dispatch => {
         dispatch({ type: TYPE.payment_complete })
-        // dispatch(navigate('/order-confirmation'))
+        dispatch(navigate('/order-confirmation'))
       })
     })
     .catch(e => console.log('error => ', e))

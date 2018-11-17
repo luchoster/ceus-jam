@@ -2,26 +2,20 @@ import * as R from 'ramda'
 import React from 'react'
 import { connect } from 'react-redux'
 import Cleave from 'cleave.js/react'
-import {
-  FormControl,
-  Input,
-  InputLabel,
-  TextField,
-  withStyles,
-} from '@material-ui/core'
+import { TextField } from '@material-ui/core'
 
 import { mapIndexed, notNilOrEmpty } from '../lib/helpers'
 import { Cart, Checkout } from '../state/actions'
 
-const styles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-})
+// const styles = theme => ({
+//   container: {
+//     display: 'flex',
+//     flexWrap: 'wrap',
+//   },
+// })
 
 const CreditCardMask = props => {
-  const { onChange, ...other } = props
+  const { onChange } = props
   return (
     <Cleave
       placeholder="Enter your credit card number"
@@ -32,7 +26,7 @@ const CreditCardMask = props => {
 }
 
 const ExpirationMask = props => {
-  const { onChange, ...other } = props
+  const { onChange } = props
   return (
     <Cleave
       placeholder="MM/YY"
@@ -140,17 +134,17 @@ class CheckoutPage extends React.Component {
   }
 
   render() {
-    const {
-      line_1,
-      country,
-      county,
-      postcode,
-      name,
-      email,
-      cardNumber,
-      expiry,
-      cvc,
-    } = this.state
+    // const {
+    //   line_1,
+    //   country,
+    //   county,
+    //   postcode,
+    //   name,
+    //   email,
+    //   cardNumber,
+    //   expiry,
+    //   cvc,
+    // } = this.state
     return (
       <React.Fragment>
         <section id="banner">

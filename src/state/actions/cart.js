@@ -1,6 +1,4 @@
-import * as R from 'ramda'
-import Bluebird from 'bluebird'
-import { GetCartItems, DeleteCart } from '../../lib/moltin'
+import { GetCartItems } from '../../lib/moltin'
 
 const TYPE = {
   count: 'RECEIVE_COUNT',
@@ -13,8 +11,8 @@ const _getCart = () => dispatch =>
     dispatch({ type: TYPE.receive_cart, payload: cartItems.data })
   })
 
-const _deleteCart = () => dispatch =>
-  DeleteCart().then(cart => dispatch({ type: TYPE.clear_cart }))
+// const _deleteCart = () => dispatch =>
+//   DeleteCart().then(cart => dispatch({ type: TYPE.clear_cart }))
 
 export default {
   TYPE,

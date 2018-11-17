@@ -1,8 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { mapIndexed, notNilOrEmpty } from '../lib/helpers'
-import { AddCart, DeleteCart } from '../lib/moltin'
-import CartModal from './Modal'
+import { AddCart } from '../lib/moltin'
 
 const Pricing = props => (
   <section id="content-wrapper">

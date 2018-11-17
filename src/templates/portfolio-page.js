@@ -1,5 +1,6 @@
 import React from 'react'
-import { mapIndexed, createMarkup, notNilOrEmpty } from '../lib/helpers'
+import { graphql } from 'gatsby'
+import { mapIndexed } from '../lib/helpers'
 import SqBg from '../assets/imgs/sq-pattern.png'
 
 export const PortfolioPageTemplate = ({ client }) => {
@@ -24,7 +25,12 @@ export const PortfolioPageTemplate = ({ client }) => {
             {mapIndexed((item, index) => (
               <article>
                 {item.link ? (
-                  <a href={item.link} target="_blank" className="image">
+                  <a
+                    rel="noopener noreferrer"
+                    href={item.link}
+                    target="_blank"
+                    className="image"
+                  >
                     <img src={item.image} alt={item.name} />
                   </a>
                 ) : (
